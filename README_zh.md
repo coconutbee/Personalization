@@ -41,7 +41,7 @@
 ### gt.json (由 gt_maker.py 產生)
 在原始欄位基礎上新增：
 - gt_expression：表情標籤 (happy/surprise/confuse/neutral/sad/others)
-- gt_gender：性別標籤 (Male/Female/Both/Unknown)
+- gt_gender：性別標籤 (Male/Female)
 - gt_pose：姿態標籤 (Frontal/Head_Turn_Left/…)
 
 ## 輸出結果
