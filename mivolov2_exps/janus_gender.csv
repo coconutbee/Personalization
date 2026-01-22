@@ -1,0 +1,21 @@
+﻿prompt,expression_internvl,mapped_expression,ground_truth_reference,expression_correct,gender_ground_truth,mivolo_gender,mivolo_age,gender_correct
+"A woman looks down to her left, her mouth slightly open in a laugh, while holding a coffee cup.jpg",happy,happy,happy,1,female,female,33.88,1
+A boy looks upward with wide eyes and a surprised expression as snowflakes fall on his face.jpg,surprise,surprise,surprise,1,male,male,5.22,1
+"A girl faces downward with a shy smile, cheeks slightly blushing.jpg",sad,sad,happy,0,female,female,5.41,1
+"A girl turns her head left and giggles, eyes squinted, reacting to a friend’s joke.jpg",happy,happy,happy,1,female,female,13.84,1
+"A girl turns her head over her right shoulder, smiling playfully toward a friend calling her name.jpg",happy,happy,happy,1,female,female,31.86,1
+"A lady turns her head back over her shoulder, lips slightly parted, showing a surprised expression.jpg",surprise,surprise,surprise,1,female,female,25.44,1
+"A man faces slightly downward, smiling proudly as sunlight shines on his face.jpg",happy,happy,happy,1,male,male,42.41,1
+"A man leans his head toward his right shoulder, showing a puzzled or questioning look.jpg",sad,sad,confuse,0,male,male,35.31,1
+"A man looks to his right, lips pursed as if whistling softly, with his head slightly raised.jpg",others,others,neutral,0,male,male,29.02,1
+"A man looks up and to his left with a thoughtful expression, as if remembering something.jpg",neutral,neutral,confuse,0,male,male,27.72,1
+"A man slightly turns his face upward to the left, smiling confidently as wind moves his hair.jpg",happy,happy,happy,1,male,male,32.25,1
+"A man tilts his head left with a relaxed smile, eyes glancing downward toward his pet dog.jpg",happy,happy,happy,1,male,male,37.75,1
+A man turns his head slightly to the right and smiles gently while looking at a small butterfly near his shoulder.jpg,happy,happy,happy,1,male,male,33.88,1
+A teenage boy turns his head right and narrows his eyes with a playful smirk.jpg,happy,happy,happy,1,male,male,16.12,1
+"A woman looks sideways toward the left, brows raised, as if reacting in surprise.jpg",surprise,surprise,surprise,1,female,female,31.19,1
+"A woman looks upward with her head tilted back slightly, expressing joy and laughter.jpg",happy,happy,happy,1,female,female,32.78,1
+"A woman tilts her head backward with eyes closed, expressing satisfaction and calmness.jpg",happy,happy,neutral,0,female,female,28.81,1
+"A woman with her head tilted right and eyes half-closed gives a soft, dreamy smile.jpg",happy,happy,happy,1,female,female,34.31,1
+"A young man looks straight but raises his eyebrows in curiosity, head slightly leaned forward.jpg",confuse,confuse,confuse,1,male,male,22.31,1
+A young woman tilts her head downward with a warm grin as she gazes at a cat resting on her lap.jpg,happy,happy,happy,1,female,female,27.62,1

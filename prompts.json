@@ -1,0 +1,102 @@
+[
+  {
+    "id": 0,
+    "image": "0.jpg",
+    "prompt": "A boy looks upward with wide eyes and a surprised expression as snowflakes fall on his face"
+  },
+  {
+    "id": 1,
+    "image": "1.jpg",
+    "prompt": "A girl faces downward with a shy smile, cheeks slightly blushing"
+  },
+  {
+    "id": 2,
+    "image": "2.jpg",
+    "prompt": "A girl turns her head left and giggles, eyes squinted, reacting to a friend's joke"
+  },
+  {
+    "id": 3,
+    "image": "3.jpg",
+    "prompt": "A girl turns her head over her right shoulder, smiling playfully toward a friend calling her name"
+  },
+  {
+    "id": 4,
+    "image": "4.jpg",
+    "prompt": "A lady turns her head back over her shoulder, lips slightly parted, showing a surprised expression"
+  },
+  {
+    "id": 5,
+    "image": "5.jpg",
+    "prompt": "A man faces slightly downward, smiling proudly as sunlight shines on his face"
+  },
+  {
+    "id": 6,
+    "image": "6.jpg",
+    "prompt": "A man leans his head toward his right shoulder, showing a puzzled or questioning look"
+  },
+  {
+    "id": 7,
+    "image": "7.jpg",
+    "prompt": "A man looks to his right, lips pursed as if whistling softly, with his head slightly raised"
+  },
+  {
+    "id": 8,
+    "image": "8.jpg",
+    "prompt": "A man looks up and to his left with a thoughtful expression, as if remembering something"
+  },
+  {
+    "id": 9,
+    "image": "9.jpg",
+    "prompt": "A man slightly turns his face upward to the left, smiling confidently as wind moves his hair"
+  },
+  {
+    "id": 10,
+    "image": "10.jpg",
+    "prompt": "A man tilts his head left with a relaxed smile, eyes glancing downward toward his pet dog"
+  },
+  {
+    "id": 11,
+    "image": "11.jpg",
+    "prompt": "A man turns his head slightly to the right and smiles gently while looking at a small butterfly near his shoulder"
+  },
+  {
+    "id": 12,
+    "image": "12.jpg",
+    "prompt": "A teenage boy turns his head right and narrows his eyes with a playful smirk"
+  },
+  {
+    "id": 13,
+    "image": "13.jpg",
+    "prompt": "A woman looks down to her left, her mouth slightly open in a laugh, while holding a coffee cup"
+  },
+  {
+    "id": 14,
+    "image": "14.jpg",
+    "prompt": "A woman looks sideways toward the left, brows raised, as if reacting in surprise"
+  },
+  {
+    "id": 15,
+    "image": "15.jpg",
+    "prompt": "A woman looks upward with her head tilted back slightly, expressing joy and laughter"
+  },
+  {
+    "id": 16,
+    "image": "16.jpg",
+    "prompt": "A woman tilts her head backward with eyes closed, expressing satisfaction and calmness"
+  },
+  {
+    "id": 17,
+    "image": "17.jpg",
+    "prompt": "A woman with her head tilted right and eyes half-closed gives a soft, dreamy smile"
+  },
+  {
+    "id": 18,
+    "image": "18.jpg",
+    "prompt": "A young man looks straight but raises his eyebrows in curiosity, head slightly leaned forward"
+  },
+  {
+    "id": 19,
+    "image": "19.jpg",
+    "prompt": "A young woman tilts her head downward with a warm grin as she gazes at a cat resting on her lap"
+  }
+]

@@ -1,0 +1,21 @@
+Image,Final_Score,Exp (17%),Scen (17%),Gen (17%),Pose (17%),ID_Sim (32%),VLM_Exp,Mivolo_Gender
+0.jpg,74.04,1,1.0,1,0,0.72,surprise,male
+1.jpg,0.0,0,0.0,0,0,0.0,surprise,male
+2.jpg,0.0,0,0.0,0,0,0.0,surprise,male
+3.jpg,16.0,0,0.0,0,0,0.5,others,male
+4.jpg,29.16,0,1.0,0,0,0.38,others,male
+5.jpg,34.0,0,1.0,1,0,0.0,others,male
+6.jpg,53.2,0,1.0,1,0,0.6,others,male
+7.jpg,37.32,0,0.8,1,0,0.21,others,male
+8.jpg,45.64,0,0.8,1,0,0.47,surprise,male
+9.jpg,52.56,0,1.0,1,0,0.58,surprise,male
+10.jpg,32.04,0,0.0,1,0,0.47,surprise,male
+11.jpg,28.84,0,0.0,1,0,0.37,others,male
+12.jpg,52.24,0,1.0,1,0,0.57,others,male
+13.jpg,17.0,0,1.0,0,0,0.0,others,male
+14.jpg,39.08,0,1.0,0,0,0.69,others,male
+15.jpg,23.54,0,0.5,0,0,0.47,surprise,male
+16.jpg,15.36,0,0.0,0,0,0.48,surprise,male
+17.jpg,25.5,1,0.5,0,0,0.0,happy,male
+18.jpg,39.4,0,0.0,1,0,0.7,neutral,male
+19.jpg,17.0,0,0.0,1,0,0.0,others,female
