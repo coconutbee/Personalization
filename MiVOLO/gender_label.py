@@ -208,7 +208,7 @@ def run_gender_labeling(method, base_folder_path, json_path):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--method", type=str, default='pixart', help="Name of the generation method")
-    parser.add_argument("--json", type=str, default='output.json', help="Path to the JSON file")
+    parser.add_argument("--json", type=str, default='gt.json', help="Path to the JSON file")
     args = parser.parse_args()
     
     # === [關鍵修改] 更新路徑映射 (對應 faceswap_results) ===
@@ -220,6 +220,6 @@ if __name__ == "__main__":
     }
     
     # 預設路徑
-    base_folder_path = path_map.get(args.method, './output')
+    base_folder_path = path_map.get(args.method, './faceswap_results/pixart')
 
     run_gender_labeling(args.method, base_folder_path, args.json)

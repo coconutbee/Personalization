@@ -227,7 +227,7 @@ def run_merged_eval(method, base_folder_path, json_path):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("--method", type=str, default='pixart', help="folder selection")
-    parser.add_argument("--json", type=str, required=True, help="Path to the JSON file")
+    parser.add_argument("--json", type=str, default='gt.json', help="Path to the JSON file")
     args = parser.parse_args()
 
     # 路徑映射 (已更新為 faceswap_results)

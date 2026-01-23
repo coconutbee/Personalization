@@ -350,7 +350,7 @@ def run_pose_labeling(method, image_dir, json_path, checkpoint_path):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--method", type=str, default='pixart')
-    parser.add_argument("--json", type=str, default='output.json')
+    parser.add_argument("--json", type=str, default='gt.json')
     parser.add_argument("--checkpoint", default='./pose/checkpoints/SemiUHPE/DAD-WildHead-EffNetV2-S-best.pth')
     args = parser.parse_args()
 
@@ -363,6 +363,6 @@ if __name__ == "__main__":
     }
     
     # 預設路徑
-    image_dir = path_map.get(args.method, './output')
+    image_dir = path_map.get(args.method, './faceswap_results/pixart')
 
     run_pose_labeling(args.method, image_dir, args.json, args.checkpoint)
