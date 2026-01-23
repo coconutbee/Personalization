@@ -14,7 +14,7 @@ This project evaluates whether personalized portrait generation results match th
 Please refer to the respective folders for downloading and setting up the required pre-trained models.
 
 AdaFace:
-  - put the model file under 'AdaFace/checkpoints/'. Here's the [link](https://drive.google.com/file/d/1eUaSHG4pGlIZK7hBkqjyp2fc2epKoBvI/view)
+  - put the model file under 'AdaFace/pretrained/'. Here's the [link](https://drive.google.com/file/d/1eUaSHG4pGlIZK7hBkqjyp2fc2epKoBvI/view)
 
 Pose Model:
   - put the model file under 'pose/checkpoints/SemiUHPE'. Here's the [link](https://huggingface.co/HoyerChou/SemiUHPE/tree/main). We use DAD-WildHead-EffNetV2-S model.
