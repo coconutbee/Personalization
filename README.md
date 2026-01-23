@@ -10,9 +10,19 @@ This project evaluates whether personalized portrait generation results match th
 5. Use AdaFace to compute ID similarity (cosine similarity).
 6. Aggregate scores with weights to produce the final report.
 
+## Pretrined Models Preparation
+Please refer to the respective folders for downloading and setting up the required pre-trained models.
+
+AdaFace:
+  - put the model file under 'AdaFace/checkpoints/'. Here's the [link](https://drive.google.com/file/d/1eUaSHG4pGlIZK7hBkqjyp2fc2epKoBvI/view)
+
+Pose Model:
+  - put the model file under 'pose/checkpoints/SemiUHPE'. Here's the [link](https://huggingface.co/HoyerChou/SemiUHPE/tree/main). We use DAD-WildHead-EffNetV2-S model.
+
+
 ## Configuration and Structure
-- prompts.json: input prompts and image list.
-- faceswap_results/: generated/swapped images.
+- prompts.json: input prompts and image list. (ongoing updates)
+- faceswap_results/: generated/swapped images. (ongoging updates)
   - pixart/, janus/, infinity/, showo2/: per-method outputs.
   - reference/: reference face images for ID similarity.
 - output/: fallback output path (used when method not matched).
@@ -22,8 +32,8 @@ This project evaluates whether personalized portrait generation results match th
 - final_scores.csv: summary report.
 
 > Image naming
-> - Default output filename uses 0_{image}.png, e.g., image=1.jpg → 0_1.png.
-> - Scripts try multiple extensions/prefixes, but keeping 0_{id}.png is recommended.
+> - Default output filename uses {reference_index}_{prompt_index}.png, e.g., image=1.jpg, reference=0.jpg → 0_1.png.
+> - Scripts try multiple extensions/prefixes, but keeping {reference_index}_{prompt_index}.png is recommended.
 
 ## Input Formats
 
@@ -73,6 +83,14 @@ The final score is in $0\sim100$ with these weights:
 See scoring.py for implementation.
 
 ## Inference
+
+### 0) Environment Setup
+Create a conda environment and install dependencies:
+```bash
+conda create -n pslz python=3.12.12 -y
+conda activate pslz
+pip install -r requirements.txt
+```
 
 ### 1) One-click
 ```bash
