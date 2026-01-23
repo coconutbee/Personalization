@@ -89,6 +89,7 @@ Create a conda environment and install dependencies:
 ```bash
 conda create -n pslz python=3.12.12 -y
 conda activate pslz
+cd Personalization
 pip install -r requirements.txt
 ```
 
