@@ -91,7 +91,7 @@ def find_ref_fixed(base_dir):
 # 🖥️ 主程式
 # ==========================================
 def main():
-    st.title("🏆 Face Swap & EvalMuse Benchmark Dashboard")
+    st.title("🏆 UI application for visualization")
     data_list = load_and_process_data()
     if not data_list: return
 
@@ -134,7 +134,7 @@ def main():
         st.markdown("#### 🎯 Metrics Comparison")
         # 擴展為 5 欄以容納所有分數
         k1, k2, k3, k4, k5 = st.columns(5)
-        k1.metric("🏆 Final", f"{item['final_score']:.1f}")
+        k1.metric("🏆 Our Scoring Module", f"{item['final_score']:.1f}")
         k2.metric("🎨 EvalMuse", f"{item['fga_alignment_score_val']:.2f}")
         k3.metric("📝 CLIP T2I", f"{item['clip_t2i_val']:.2f}")
         k4.metric("🖼️ CLIP I2I", f"{item['clip_i2i_val']:.2f}")

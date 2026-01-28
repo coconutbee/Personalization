@@ -138,7 +138,7 @@ python EvalMuse/eval.py --json gt.json
 ```
 
 ### 5) UI Application (Optional)
-To run the UI application for visualization and interaction, execute:
+To run the UI application for visualization, execute:
 ```bash
-python app_v2.py
+streamlit run app_v2.py
 ```
