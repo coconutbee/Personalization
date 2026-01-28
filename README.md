@@ -19,6 +19,9 @@ AdaFace:
 Pose Model:
   - put the model file under 'pose/checkpoints/SemiUHPE'. Here's the [link](https://huggingface.co/HoyerChou/SemiUHPE/tree/main). We use DAD-WildHead-EffNetV2-S model.
 
+EvalMuse:
+  - put the model file under 'EvalMuse/'. Here's the [link](https://huggingface.co/hanshuhao/FGA-BLIP2/resolve/main/fga_blip2.pth?download=true).
+
 
 ## Configuration and Structure
 - prompts.json: input prompts and image list. (ongoing updates)
@@ -102,7 +105,7 @@ run.sh executes:
 2. exps_scenario.py: InternVL expression + scenario
 3. MiVOLO/gender_label.py: gender
 4. AdaFace/inference.py: ID similarity
-5. pose/eval_pose.py: pose evaluation
+5. pose/eval_pose_v2.py: pose evaluation
 6. scoring.py: weighted scoring and reports
 
 ### 2) Method-specific
@@ -111,7 +114,7 @@ Scripts support a method parameter (pixart/janus/infinity/showo2) to switch imag
 python exps_scenario.py --method pixart --json gt.json
 python MiVOLO/gender_label.py --method pixart --json gt.json
 python AdaFace/inference.py --method pixart --json gt.json
-python pose/eval_pose.py --method pixart --json gt.json
+python pose/eval_pose_v2.py --method pixart --json gt.json
 ```
 
 ### 3) Scoring only
@@ -123,6 +126,19 @@ python scoring.py --json gt.json --csv final_scores.csv
 - InternVL (lmdeploy pipeline): expression + scenario
 - MiVOLO: gender
 - AdaFace: ID similarity
-- Pose model: pose classification
+- Pose model: pose classification (eval_pose_v2.py)
 
 Install dependencies as needed. For package versions, see requirements.txt. Some scripts switch timm versions for model compatibility.
+
+### 4) CLIP, DINO, EvalMuse Evaluation (Optional)
+To further evaluate the generated images using CLIP, DINO, and EvalMuse, you can run the following commands after setting up the respective models:
+```bash
+python general_scoring.py --json gt.json
+python EvalMuse/eval.py --json gt.json
+```
+
+### 5) UI Application (Optional)
+To run the UI application for visualization and interaction, execute:
+```bash
+python app_v2.py
+```

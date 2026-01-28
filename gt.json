@@ -15,7 +15,10 @@
         "gender_correct": 1,
         "id_similarity": 0.72,
         "pose_prediction": "No_Body_Detected",
-        "pose_correct": 0
+        "pose_correct": 0,
+        "clip_t2i_score": 0.21,
+        "clip_i2i_score": 0.73,
+        "dino_score": 0.61
     },
     {
         "id": 1,
@@ -32,8 +35,11 @@
         "mivolo_age": 38.7,
         "gender_correct": 0,
         "id_similarity": 0.66,
-        "pose_prediction": "Body_Turn_Right_Face_Front",
-        "pose_correct": 0
+        "pose_prediction": "Frontal",
+        "pose_correct": 1,
+        "clip_t2i_score": 0.18,
+        "clip_i2i_score": 0.67,
+        "dino_score": 0.44
     },
     {
         "id": 2,
@@ -50,8 +56,11 @@
         "mivolo_age": 36.7,
         "gender_correct": 0,
         "id_similarity": null,
-        "pose_prediction": "Body_Turn_Left_Face_Front",
-        "pose_correct": 0
+        "pose_prediction": "Frontal",
+        "pose_correct": 0,
+        "clip_t2i_score": 0.2,
+        "clip_i2i_score": 0.69,
+        "dino_score": 0.54
     },
     {
         "id": 3,
@@ -68,8 +77,11 @@
         "mivolo_age": 41.1,
         "gender_correct": 0,
         "id_similarity": 0.5,
-        "pose_prediction": "Body_Turn_Left_Face_Front",
-        "pose_correct": 0
+        "pose_prediction": "Head_Turn_Right",
+        "pose_correct": 0,
+        "clip_t2i_score": 0.23,
+        "clip_i2i_score": 0.65,
+        "dino_score": 0.41
     },
     {
         "id": 4,
@@ -86,8 +98,11 @@
         "mivolo_age": 47.8,
         "gender_correct": 0,
         "id_similarity": 0.38,
-        "pose_prediction": "Head_Tilt_Left",
-        "pose_correct": 0
+        "pose_prediction": "Back_View_Side_Looking_Away",
+        "pose_correct": 0,
+        "clip_t2i_score": 0.2,
+        "clip_i2i_score": 0.64,
+        "dino_score": 0.38
     },
     {
         "id": 5,
@@ -105,7 +120,10 @@
         "gender_correct": 1,
         "id_similarity": null,
         "pose_prediction": "Head_Tilt_Left",
-        "pose_correct": 0
+        "pose_correct": 0,
+        "clip_t2i_score": 0.25,
+        "clip_i2i_score": 0.72,
+        "dino_score": 0.28
     },
     {
         "id": 6,
@@ -123,7 +141,10 @@
         "gender_correct": 1,
         "id_similarity": 0.6,
         "pose_prediction": "Frontal",
-        "pose_correct": 0
+        "pose_correct": 0,
+        "clip_t2i_score": 0.23,
+        "clip_i2i_score": 0.7,
+        "dino_score": 0.56
     },
     {
         "id": 7,
@@ -140,8 +161,11 @@
         "mivolo_age": 35.5,
         "gender_correct": 1,
         "id_similarity": 0.21,
-        "pose_prediction": "Back_Over_Shoulder",
-        "pose_correct": 0
+        "pose_prediction": "Body_Lean_Left",
+        "pose_correct": 0,
+        "clip_t2i_score": 0.28,
+        "clip_i2i_score": 0.61,
+        "dino_score": 0.58
     },
     {
         "id": 8,
@@ -159,7 +183,10 @@
         "gender_correct": 1,
         "id_similarity": 0.47,
         "pose_prediction": "Frontal",
-        "pose_correct": 0
+        "pose_correct": 0,
+        "clip_t2i_score": 0.25,
+        "clip_i2i_score": 0.63,
+        "dino_score": 0.58
     },
     {
         "id": 9,
@@ -176,8 +203,11 @@
         "mivolo_age": 36.8,
         "gender_correct": 1,
         "id_similarity": 0.58,
-        "pose_prediction": "Body_Turn_Left_Face_Front",
-        "pose_correct": 0
+        "pose_prediction": "Head_Slight_Right",
+        "pose_correct": 0,
+        "clip_t2i_score": 0.23,
+        "clip_i2i_score": 0.62,
+        "dino_score": 0.47
     },
     {
         "id": 10,
@@ -195,7 +225,10 @@
         "gender_correct": 1,
         "id_similarity": 0.47,
         "pose_prediction": "Body_Lean_Left",
-        "pose_correct": 0
+        "pose_correct": 0,
+        "clip_t2i_score": 0.22,
+        "clip_i2i_score": 0.72,
+        "dino_score": 0.32
     },
     {
         "id": 11,
@@ -212,8 +245,11 @@
         "mivolo_age": 34.8,
         "gender_correct": 1,
         "id_similarity": 0.37,
-        "pose_prediction": "Back_Over_Shoulder",
-        "pose_correct": 0
+        "pose_prediction": "Body_Lean_Left",
+        "pose_correct": 0,
+        "clip_t2i_score": 0.21,
+        "clip_i2i_score": 0.76,
+        "dino_score": 0.45
     },
     {
         "id": 12,
@@ -230,8 +266,11 @@
         "mivolo_age": 41.1,
         "gender_correct": 1,
         "id_similarity": 0.57,
-        "pose_prediction": "Back_Over_Shoulder",
-        "pose_correct": 0
+        "pose_prediction": "Head_Tilt_Right",
+        "pose_correct": 0,
+        "clip_t2i_score": 0.22,
+        "clip_i2i_score": 0.68,
+        "dino_score": 0.54
     },
     {
         "id": 13,
@@ -249,7 +288,10 @@
         "gender_correct": 0,
         "id_similarity": null,
         "pose_prediction": "Head_Turn_Right",
-        "pose_correct": 0
+        "pose_correct": 0,
+        "clip_t2i_score": 0.28,
+        "clip_i2i_score": 0.55,
+        "dino_score": 0.23
     },
     {
         "id": 14,
@@ -267,7 +309,10 @@
         "gender_correct": 0,
         "id_similarity": 0.69,
         "pose_prediction": "No_Body_Detected",
-        "pose_correct": 0
+        "pose_correct": 0,
+        "clip_t2i_score": 0.22,
+        "clip_i2i_score": 0.68,
+        "dino_score": 0.6
     },
     {
         "id": 15,
@@ -284,8 +329,11 @@
         "mivolo_age": 37.9,
         "gender_correct": 0,
         "id_similarity": 0.47,
-        "pose_prediction": "Back_Over_Shoulder",
-        "pose_correct": 0
+        "pose_prediction": "Body_Turn_Right_Face_Front",
+        "pose_correct": 0,
+        "clip_t2i_score": 0.16,
+        "clip_i2i_score": 0.69,
+        "dino_score": 0.48
     },
     {
         "id": 16,
@@ -303,7 +351,10 @@
         "gender_correct": 0,
         "id_similarity": 0.48,
         "pose_prediction": "Head_Turn_Right",
-        "pose_correct": 0
+        "pose_correct": 0,
+        "clip_t2i_score": 0.24,
+        "clip_i2i_score": 0.6,
+        "dino_score": 0.39
     },
     {
         "id": 17,
@@ -321,7 +372,10 @@
         "gender_correct": 0,
         "id_similarity": null,
         "pose_prediction": "Frontal",
-        "pose_correct": 0
+        "pose_correct": 0,
+        "clip_t2i_score": 0.19,
+        "clip_i2i_score": 0.65,
+        "dino_score": 0.46
     },
     {
         "id": 18,
@@ -338,8 +392,11 @@
         "mivolo_age": 45.4,
         "gender_correct": 1,
         "id_similarity": 0.7,
-        "pose_prediction": "Body_Turn_Left_Face_Front",
-        "pose_correct": 0
+        "pose_prediction": "Head_Turn_Left",
+        "pose_correct": 0,
+        "clip_t2i_score": 0.24,
+        "clip_i2i_score": 0.68,
+        "dino_score": 0.57
     },
     {
         "id": 19,
@@ -357,6 +414,9 @@
         "gender_correct": 1,
         "id_similarity": null,
         "pose_prediction": "No_Body_Detected",
-        "pose_correct": 0
+        "pose_correct": 0,
+        "clip_t2i_score": 0.17,
+        "clip_i2i_score": 0.52,
+        "dino_score": 0.03
     }
 ]

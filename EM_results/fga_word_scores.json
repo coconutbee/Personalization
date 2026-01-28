@@ -1,0 +1,1886 @@
+[
+    {
+        "id": 0,
+        "image": "0.jpg",
+        "prompt": "A boy looks upward with wide eyes and a surprised expression as snowflakes fall on his face",
+        "gt_expression": "surprise",
+        "gt_gender": "Male",
+        "gt_pose": "Frontal",
+        "vlm_expression": "surprise",
+        "expression_correct": 1,
+        "scenario_reasoning": "- Extracted Context: snowflakes fall on his face\n- Visual Evidence: Snowflakes are visible on the person's hat and face, indicating that it is snowing.\n- Match Score: 1.0",
+        "scenario_score": 1.0,
+        "mivolo_gender": "male",
+        "mivolo_age": 47.1,
+        "gender_correct": 1,
+        "id_similarity": 0.72,
+        "pose_prediction": "No_Body_Detected",
+        "pose_correct": 0,
+        "clip_t2i_score": 0.21,
+        "clip_i2i_score": 0.73,
+        "dino_score": 0.61,
+        "fga_alignment_score": "1.25",
+        "all_token_scores": [
+            [
+                "a",
+                0.11
+            ],
+            [
+                "boy",
+                0.02
+            ],
+            [
+                "looks",
+                0.17
+            ],
+            [
+                "upward",
+                0.22
+            ],
+            [
+                "with",
+                0.1
+            ],
+            [
+                "wide",
+                0.14
+            ],
+            [
+                "eyes",
+                0.15
+            ],
+            [
+                "and",
+                0.12
+            ],
+            [
+                "a",
+                0.11
+            ],
+            [
+                "surprised",
+                0.12
+            ],
+            [
+                "expression",
+                0.18
+            ],
+            [
+                "as",
+                0.3
+            ],
+            [
+                "snow",
+                0.15
+            ],
+            [
+                "##fl",
+                0.08
+            ],
+            [
+                "##akes",
+                0.12
+            ],
+            [
+                "fall",
+                0.13
+            ],
+            [
+                "on",
+                0.13
+            ],
+            [
+                "his",
+                0.2
+            ],
+            [
+                "face",
+                0.5
+            ]
+        ]
+    },
+    {
+        "id": 1,
+        "image": "1.jpg",
+        "prompt": "A girl faces downward with a shy smile, cheeks slightly blushing",
+        "gt_expression": "happy",
+        "gt_gender": "Female",
+        "gt_pose": "Frontal",
+        "vlm_expression": "surprise",
+        "expression_correct": 0,
+        "scenario_reasoning": "- Extracted Context: cheeks slightly blushing\n- Visual Evidence: The image shows a person with a beard and mustache, but there is no clear indication of cheeks slightly blushing.\n- Match Score: 0.0",
+        "scenario_score": 0.0,
+        "mivolo_gender": "male",
+        "mivolo_age": 38.7,
+        "gender_correct": 0,
+        "id_similarity": 0.66,
+        "pose_prediction": "Frontal",
+        "pose_correct": 1,
+        "clip_t2i_score": 0.18,
+        "clip_i2i_score": 0.67,
+        "dino_score": 0.44,
+        "fga_alignment_score": "1.16",
+        "all_token_scores": [
+            [
+                "a",
+                0.08
+            ],
+            [
+                "girl",
+                0.01
+            ],
+            [
+                "faces",
+                0.06
+            ],
+            [
+                "downward",
+                0.16
+            ],
+            [
+                "with",
+                0.05
+            ],
+            [
+                "a",
+                0.06
+            ],
+            [
+                "shy",
+                0.08
+            ],
+            [
+                "smile",
+                0.04
+            ],
+            [
+                ",",
+                0.09
+            ],
+            [
+                "cheeks",
+                0.18
+            ],
+            [
+                "slightly",
+                0.11
+            ],
+            [
+                "blushing",
+                0.06
+            ]
+        ]
+    },
+    {
+        "id": 2,
+        "image": "2.jpg",
+        "prompt": "A girl turns her head left and giggles, eyes squinted, reacting to a friend's joke",
+        "gt_expression": "happy",
+        "gt_gender": "Female",
+        "gt_pose": "Head_Turn_Left",
+        "vlm_expression": "surprise",
+        "expression_correct": 0,
+        "scenario_reasoning": "- Extracted Context: \"reacting to a friend's joke\"\n- Visual Evidence: The image shows a man with a mustache and long hair, looking upward with a surprised expression.\n- Match Score: 0.0",
+        "scenario_score": 0.0,
+        "mivolo_gender": "male",
+        "mivolo_age": 36.7,
+        "gender_correct": 0,
+        "id_similarity": null,
+        "pose_prediction": "Frontal",
+        "pose_correct": 0,
+        "clip_t2i_score": 0.2,
+        "clip_i2i_score": 0.69,
+        "dino_score": 0.54,
+        "fga_alignment_score": "1.23",
+        "all_token_scores": [
+            [
+                "a",
+                0.08
+            ],
+            [
+                "girl",
+                0.05
+            ],
+            [
+                "turns",
+                0.15
+            ],
+            [
+                "her",
+                0.06
+            ],
+            [
+                "head",
+                0.49
+            ],
+            [
+                "left",
+                0.3
+            ],
+            [
+                "and",
+                0.05
+            ],
+            [
+                "giggles",
+                0.05
+            ],
+            [
+                ",",
+                0.07
+            ],
+            [
+                "eyes",
+                0.26
+            ],
+            [
+                "squinted",
+                0.04
+            ],
+            [
+                ",",
+                0.11
+            ],
+            [
+                "reacting",
+                0.06
+            ],
+            [
+                "to",
+                0.02
+            ],
+            [
+                "a",
+                0.02
+            ],
+            [
+                "friend",
+                0.03
+            ],
+            [
+                "'",
+                0.03
+            ],
+            [
+                "s",
+                0.02
+            ],
+            [
+                "joke",
+                0.03
+            ]
+        ]
+    },
+    {
+        "id": 3,
+        "image": "3.jpg",
+        "prompt": "A girl turns her head over her right shoulder, smiling playfully toward a friend calling her name",
+        "gt_expression": "happy",
+        "gt_gender": "Female",
+        "gt_pose": "Back_Over_Shoulder",
+        "vlm_expression": "others",
+        "expression_correct": 0,
+        "scenario_reasoning": "- Extracted Context: smiling playfully toward a friend calling her name\n- Visual Evidence: The image shows a person with long hair and a beard, looking upward with a neutral expression. There is no visible interaction with a friend or any indication of a playful smile.\n- Match Score: 0.0",
+        "scenario_score": 0.0,
+        "mivolo_gender": "male",
+        "mivolo_age": 41.1,
+        "gender_correct": 0,
+        "id_similarity": 0.5,
+        "pose_prediction": "Head_Turn_Right",
+        "pose_correct": 0,
+        "clip_t2i_score": 0.23,
+        "clip_i2i_score": 0.65,
+        "dino_score": 0.41,
+        "fga_alignment_score": "1.20",
+        "all_token_scores": [
+            [
+                "a",
+                0.08
+            ],
+            [
+                "girl",
+                0.03
+            ],
+            [
+                "turns",
+                0.18
+            ],
+            [
+                "her",
+                0.04
+            ],
+            [
+                "head",
+                0.56
+            ],
+            [
+                "over",
+                0.15
+            ],
+            [
+                "her",
+                0.05
+            ],
+            [
+                "right",
+                0.23
+            ],
+            [
+                "shoulder",
+                0.23
+            ],
+            [
+                ",",
+                0.08
+            ],
+            [
+                "smiling",
+                0.08
+            ],
+            [
+                "playfully",
+                0.06
+            ],
+            [
+                "toward",
+                0.06
+            ],
+            [
+                "a",
+                0.04
+            ],
+            [
+                "friend",
+                0.01
+            ],
+            [
+                "calling",
+                0.02
+            ],
+            [
+                "her",
+                0.02
+            ],
+            [
+                "name",
+                0.01
+            ]
+        ]
+    },
+    {
+        "id": 4,
+        "image": "4.jpg",
+        "prompt": "A lady turns her head back over her shoulder, lips slightly parted, showing a surprised expression",
+        "gt_expression": "surprise",
+        "gt_gender": "Female",
+        "gt_pose": "Back_Over_Shoulder",
+        "vlm_expression": "others",
+        "expression_correct": 0,
+        "scenario_reasoning": "- Extracted Context: lips slightly parted\n- Visual Evidence: The image shows a man with his lips slightly parted, which aligns with the description.\n- Match Score: 1.0",
+        "scenario_score": 1.0,
+        "mivolo_gender": "male",
+        "mivolo_age": 47.8,
+        "gender_correct": 0,
+        "id_similarity": 0.38,
+        "pose_prediction": "Back_View_Side_Looking_Away",
+        "pose_correct": 0,
+        "clip_t2i_score": 0.2,
+        "clip_i2i_score": 0.64,
+        "dino_score": 0.38,
+        "fga_alignment_score": "1.10",
+        "all_token_scores": [
+            [
+                "a",
+                0.04
+            ],
+            [
+                "lady",
+                0.01
+            ],
+            [
+                "turns",
+                0.08
+            ],
+            [
+                "her",
+                0.01
+            ],
+            [
+                "head",
+                0.48
+            ],
+            [
+                "back",
+                0.07
+            ],
+            [
+                "over",
+                0.1
+            ],
+            [
+                "her",
+                0.01
+            ],
+            [
+                "shoulder",
+                0.12
+            ],
+            [
+                ",",
+                0.07
+            ],
+            [
+                "lips",
+                0.15
+            ],
+            [
+                "slightly",
+                0.2
+            ],
+            [
+                "parted",
+                0.24
+            ],
+            [
+                ",",
+                0.11
+            ],
+            [
+                "showing",
+                0.06
+            ],
+            [
+                "a",
+                0.06
+            ],
+            [
+                "surprised",
+                0.04
+            ],
+            [
+                "expression",
+                0.08
+            ]
+        ]
+    },
+    {
+        "id": 5,
+        "image": "5.jpg",
+        "prompt": "A man faces slightly downward, smiling proudly as sunlight shines on his face",
+        "gt_expression": "happy",
+        "gt_gender": "Male",
+        "gt_pose": "Frontal",
+        "vlm_expression": "others",
+        "expression_correct": 0,
+        "scenario_reasoning": "- Extracted Context: \"sunlight shines on his face\"\n- Visual Evidence: The image shows a man with light shining on his face, but it appears to be artificial lighting rather than sunlight.\n- Match Score: 0.5",
+        "scenario_score": 0.5,
+        "mivolo_gender": "male",
+        "mivolo_age": 39.3,
+        "gender_correct": 1,
+        "id_similarity": null,
+        "pose_prediction": "Head_Tilt_Left",
+        "pose_correct": 0,
+        "clip_t2i_score": 0.25,
+        "clip_i2i_score": 0.72,
+        "dino_score": 0.28,
+        "fga_alignment_score": "2.14",
+        "all_token_scores": [
+            [
+                "a",
+                0.46
+            ],
+            [
+                "man",
+                0.65
+            ],
+            [
+                "faces",
+                0.59
+            ],
+            [
+                "slightly",
+                0.55
+            ],
+            [
+                "downward",
+                0.51
+            ],
+            [
+                ",",
+                0.46
+            ],
+            [
+                "smiling",
+                0.14
+            ],
+            [
+                "proudly",
+                0.19
+            ],
+            [
+                "as",
+                0.47
+            ],
+            [
+                "sunlight",
+                0.54
+            ],
+            [
+                "shine",
+                0.43
+            ],
+            [
+                "##s",
+                0.44
+            ],
+            [
+                "on",
+                0.27
+            ],
+            [
+                "his",
+                0.45
+            ],
+            [
+                "face",
+                0.61
+            ]
+        ]
+    },
+    {
+        "id": 6,
+        "image": "6.jpg",
+        "prompt": "A man leans his head toward his right shoulder, showing a puzzled or questioning look",
+        "gt_expression": "confuse",
+        "gt_gender": "Male",
+        "gt_pose": "Head_Tilt_Right",
+        "vlm_expression": "others",
+        "expression_correct": 0,
+        "scenario_reasoning": "- Extracted Context: \"showing a puzzled or questioning look\"\n- Visual Evidence: The man has a puzzled or questioning look on his face.\n- Match Score: 1.0",
+        "scenario_score": 1.0,
+        "mivolo_gender": "male",
+        "mivolo_age": 43.1,
+        "gender_correct": 1,
+        "id_similarity": 0.6,
+        "pose_prediction": "Frontal",
+        "pose_correct": 0,
+        "clip_t2i_score": 0.23,
+        "clip_i2i_score": 0.7,
+        "dino_score": 0.56,
+        "fga_alignment_score": "1.88",
+        "all_token_scores": [
+            [
+                "a",
+                0.31
+            ],
+            [
+                "man",
+                0.61
+            ],
+            [
+                "leans",
+                0.26
+            ],
+            [
+                "his",
+                0.42
+            ],
+            [
+                "head",
+                0.58
+            ],
+            [
+                "toward",
+                0.27
+            ],
+            [
+                "his",
+                0.4
+            ],
+            [
+                "right",
+                0.33
+            ],
+            [
+                "shoulder",
+                0.26
+            ],
+            [
+                ",",
+                0.31
+            ],
+            [
+                "showing",
+                0.39
+            ],
+            [
+                "a",
+                0.31
+            ],
+            [
+                "puzzled",
+                0.28
+            ],
+            [
+                "or",
+                0.31
+            ],
+            [
+                "questioning",
+                0.24
+            ],
+            [
+                "look",
+                0.53
+            ]
+        ]
+    },
+    {
+        "id": 7,
+        "image": "7.jpg",
+        "prompt": "A man looks to his right, lips pursed as if whistling softly, with his head slightly raised",
+        "gt_expression": "neutral",
+        "gt_gender": "Male",
+        "gt_pose": "Head_Turn_Right",
+        "vlm_expression": "others",
+        "expression_correct": 0,
+        "scenario_reasoning": "- Extracted Context: lips pursed as if whistling softly\n- Visual Evidence: The man's lips appear to be pursed, which could suggest whistling softly.\n- Match Score: 0.8",
+        "scenario_score": 0.8,
+        "mivolo_gender": "male",
+        "mivolo_age": 35.5,
+        "gender_correct": 1,
+        "id_similarity": 0.21,
+        "pose_prediction": "Body_Lean_Left",
+        "pose_correct": 0,
+        "clip_t2i_score": 0.28,
+        "clip_i2i_score": 0.61,
+        "dino_score": 0.58,
+        "fga_alignment_score": "1.91",
+        "all_token_scores": [
+            [
+                "a",
+                0.39
+            ],
+            [
+                "man",
+                0.66
+            ],
+            [
+                "looks",
+                0.5
+            ],
+            [
+                "to",
+                0.52
+            ],
+            [
+                "his",
+                0.45
+            ],
+            [
+                "right",
+                0.51
+            ],
+            [
+                ",",
+                0.21
+            ],
+            [
+                "lips",
+                0.17
+            ],
+            [
+                "pursed",
+                0.11
+            ],
+            [
+                "as",
+                0.24
+            ],
+            [
+                "if",
+                0.16
+            ],
+            [
+                "whistling",
+                0.06
+            ],
+            [
+                "softly",
+                0.23
+            ],
+            [
+                ",",
+                0.3
+            ],
+            [
+                "with",
+                0.3
+            ],
+            [
+                "his",
+                0.38
+            ],
+            [
+                "head",
+                0.8
+            ],
+            [
+                "slightly",
+                0.54
+            ],
+            [
+                "raised",
+                0.42
+            ]
+        ]
+    },
+    {
+        "id": 8,
+        "image": "8.jpg",
+        "prompt": "A man looks up and to his left with a thoughtful expression, as if remembering something",
+        "gt_expression": "confuse",
+        "gt_gender": "Male",
+        "gt_pose": "Head_Slight_Left",
+        "vlm_expression": "surprise",
+        "expression_correct": 0,
+        "scenario_reasoning": "- Extracted Context: remembering something\n- Visual Evidence: The man is looking up and to his left with a thoughtful expression.\n- Match Score: 0.8",
+        "scenario_score": 0.8,
+        "mivolo_gender": "male",
+        "mivolo_age": 39.5,
+        "gender_correct": 1,
+        "id_similarity": 0.47,
+        "pose_prediction": "Frontal",
+        "pose_correct": 0,
+        "clip_t2i_score": 0.25,
+        "clip_i2i_score": 0.63,
+        "dino_score": 0.58,
+        "fga_alignment_score": "2.16",
+        "all_token_scores": [
+            [
+                "a",
+                0.45
+            ],
+            [
+                "man",
+                0.67
+            ],
+            [
+                "looks",
+                0.53
+            ],
+            [
+                "up",
+                0.34
+            ],
+            [
+                "and",
+                0.26
+            ],
+            [
+                "to",
+                0.43
+            ],
+            [
+                "his",
+                0.53
+            ],
+            [
+                "left",
+                0.46
+            ],
+            [
+                "with",
+                0.25
+            ],
+            [
+                "a",
+                0.31
+            ],
+            [
+                "thoughtful",
+                0.29
+            ],
+            [
+                "expression",
+                0.47
+            ],
+            [
+                ",",
+                0.46
+            ],
+            [
+                "as",
+                0.49
+            ],
+            [
+                "if",
+                0.37
+            ],
+            [
+                "remembering",
+                0.11
+            ],
+            [
+                "something",
+                0.18
+            ]
+        ]
+    },
+    {
+        "id": 9,
+        "image": "9.jpg",
+        "prompt": "A man slightly turns his face upward to the left, smiling confidently as wind moves his hair",
+        "gt_expression": "happy",
+        "gt_gender": "Male",
+        "gt_pose": "Head_Slight_Left",
+        "vlm_expression": "surprise",
+        "expression_correct": 0,
+        "scenario_reasoning": "- Extracted Context: \"wind moves his hair\"\n- Visual Evidence: The image shows a man with wind visibly moving his hair.\n- Match Score: 1.0",
+        "scenario_score": 1.0,
+        "mivolo_gender": "male",
+        "mivolo_age": 36.8,
+        "gender_correct": 1,
+        "id_similarity": 0.58,
+        "pose_prediction": "Head_Slight_Right",
+        "pose_correct": 0,
+        "clip_t2i_score": 0.23,
+        "clip_i2i_score": 0.62,
+        "dino_score": 0.47,
+        "fga_alignment_score": "1.92",
+        "all_token_scores": [
+            [
+                "a",
+                0.42
+            ],
+            [
+                "man",
+                0.69
+            ],
+            [
+                "slightly",
+                0.53
+            ],
+            [
+                "turns",
+                0.4
+            ],
+            [
+                "his",
+                0.52
+            ],
+            [
+                "face",
+                0.72
+            ],
+            [
+                "upward",
+                0.6
+            ],
+            [
+                "to",
+                0.53
+            ],
+            [
+                "the",
+                0.45
+            ],
+            [
+                "left",
+                0.47
+            ],
+            [
+                ",",
+                0.43
+            ],
+            [
+                "smiling",
+                0.17
+            ],
+            [
+                "confidently",
+                0.5
+            ],
+            [
+                "as",
+                0.42
+            ],
+            [
+                "wind",
+                0.28
+            ],
+            [
+                "moves",
+                0.29
+            ],
+            [
+                "his",
+                0.46
+            ],
+            [
+                "hair",
+                0.29
+            ]
+        ]
+    },
+    {
+        "id": 10,
+        "image": "10.jpg",
+        "prompt": "A man tilts his head left with a relaxed smile, eyes glancing downward toward his pet dog",
+        "gt_expression": "happy",
+        "gt_gender": "Male",
+        "gt_pose": "Head_Tilt_Left",
+        "vlm_expression": "surprise",
+        "expression_correct": 0,
+        "scenario_reasoning": "- Extracted Context: eyes glancing downward toward his pet dog\n- Visual Evidence: The man is looking slightly upward, not downward toward a pet dog.\n- Match Score: 0.0",
+        "scenario_score": 0.0,
+        "mivolo_gender": "male",
+        "mivolo_age": 42.2,
+        "gender_correct": 1,
+        "id_similarity": 0.47,
+        "pose_prediction": "Body_Lean_Left",
+        "pose_correct": 0,
+        "clip_t2i_score": 0.22,
+        "clip_i2i_score": 0.72,
+        "dino_score": 0.32,
+        "fga_alignment_score": "1.26",
+        "all_token_scores": [
+            [
+                "a",
+                0.17
+            ],
+            [
+                "man",
+                0.57
+            ],
+            [
+                "tilt",
+                0.23
+            ],
+            [
+                "##s",
+                0.2
+            ],
+            [
+                "his",
+                0.33
+            ],
+            [
+                "head",
+                0.63
+            ],
+            [
+                "left",
+                0.32
+            ],
+            [
+                "with",
+                0.21
+            ],
+            [
+                "a",
+                0.19
+            ],
+            [
+                "relaxed",
+                0.35
+            ],
+            [
+                "smile",
+                0.18
+            ],
+            [
+                ",",
+                0.2
+            ],
+            [
+                "eyes",
+                0.49
+            ],
+            [
+                "glancing",
+                0.2
+            ],
+            [
+                "downward",
+                0.26
+            ],
+            [
+                "toward",
+                0.04
+            ],
+            [
+                "his",
+                0.03
+            ],
+            [
+                "pet",
+                0.01
+            ],
+            [
+                "dog",
+                0.01
+            ]
+        ]
+    },
+    {
+        "id": 11,
+        "image": "11.jpg",
+        "prompt": "A man turns his head slightly to the right and smiles gently while looking at a small butterfly near his shoulder",
+        "gt_expression": "happy",
+        "gt_gender": "Male",
+        "gt_pose": "Head_Slight_Right",
+        "vlm_expression": "others",
+        "expression_correct": 0,
+        "scenario_reasoning": "- Extracted Context: \"small butterfly near his shoulder\"\n- Visual Evidence: The image shows a man with a cap and a beard, but there is no visible butterfly near his shoulder.\n- Match Score: 0.0",
+        "scenario_score": 0.0,
+        "mivolo_gender": "male",
+        "mivolo_age": 34.8,
+        "gender_correct": 1,
+        "id_similarity": 0.37,
+        "pose_prediction": "Body_Lean_Left",
+        "pose_correct": 0,
+        "clip_t2i_score": 0.21,
+        "clip_i2i_score": 0.76,
+        "dino_score": 0.45,
+        "fga_alignment_score": "1.53",
+        "all_token_scores": [
+            [
+                "a",
+                0.25
+            ],
+            [
+                "man",
+                0.68
+            ],
+            [
+                "turns",
+                0.46
+            ],
+            [
+                "his",
+                0.51
+            ],
+            [
+                "head",
+                0.71
+            ],
+            [
+                "slightly",
+                0.47
+            ],
+            [
+                "to",
+                0.47
+            ],
+            [
+                "the",
+                0.44
+            ],
+            [
+                "right",
+                0.45
+            ],
+            [
+                "and",
+                0.2
+            ],
+            [
+                "smiles",
+                0.09
+            ],
+            [
+                "gently",
+                0.24
+            ],
+            [
+                "while",
+                0.19
+            ],
+            [
+                "looking",
+                0.17
+            ],
+            [
+                "at",
+                0.02
+            ],
+            [
+                "a",
+                0.02
+            ],
+            [
+                "small",
+                0.01
+            ],
+            [
+                "butterfly",
+                0.0
+            ],
+            [
+                "near",
+                0.07
+            ],
+            [
+                "his",
+                0.24
+            ],
+            [
+                "shoulder",
+                0.15
+            ]
+        ]
+    },
+    {
+        "id": 12,
+        "image": "12.jpg",
+        "prompt": "A teenage boy turns his head right and narrows his eyes with a playful smirk",
+        "gt_expression": "happy",
+        "gt_gender": "Male",
+        "gt_pose": "Head_Turn_Right",
+        "vlm_expression": "others",
+        "expression_correct": 0,
+        "scenario_reasoning": "- Extracted Context: \"narrows his eyes with a playful smirk\"\n- Visual Evidence: The image shows a person with a playful smirk and narrowed eyes.\n- Match Score: 1.0",
+        "scenario_score": 1.0,
+        "mivolo_gender": "male",
+        "mivolo_age": 41.1,
+        "gender_correct": 1,
+        "id_similarity": 0.57,
+        "pose_prediction": "Head_Tilt_Right",
+        "pose_correct": 0,
+        "clip_t2i_score": 0.22,
+        "clip_i2i_score": 0.68,
+        "dino_score": 0.54,
+        "fga_alignment_score": "1.25",
+        "all_token_scores": [
+            [
+                "a",
+                0.1
+            ],
+            [
+                "teenage",
+                0.05
+            ],
+            [
+                "boy",
+                0.03
+            ],
+            [
+                "turns",
+                0.21
+            ],
+            [
+                "his",
+                0.12
+            ],
+            [
+                "head",
+                0.46
+            ],
+            [
+                "right",
+                0.25
+            ],
+            [
+                "and",
+                0.07
+            ],
+            [
+                "narrows",
+                0.08
+            ],
+            [
+                "his",
+                0.13
+            ],
+            [
+                "eyes",
+                0.12
+            ],
+            [
+                "with",
+                0.11
+            ],
+            [
+                "a",
+                0.11
+            ],
+            [
+                "playful",
+                0.11
+            ],
+            [
+                "smirk",
+                0.21
+            ]
+        ]
+    },
+    {
+        "id": 13,
+        "image": "13.jpg",
+        "prompt": "A woman looks down to her left, her mouth slightly open in a laugh, while holding a coffee cup",
+        "gt_expression": "happy",
+        "gt_gender": "Female",
+        "gt_pose": "Head_Slight_Left",
+        "vlm_expression": "others",
+        "expression_correct": 0,
+        "scenario_reasoning": "- Extracted Context: holding a coffee cup\n- Visual Evidence: The woman is holding a coffee cup.\n- Match Score: 1.0",
+        "scenario_score": 1.0,
+        "mivolo_gender": "male",
+        "mivolo_age": 33.2,
+        "gender_correct": 0,
+        "id_similarity": null,
+        "pose_prediction": "Head_Turn_Right",
+        "pose_correct": 0,
+        "clip_t2i_score": 0.28,
+        "clip_i2i_score": 0.55,
+        "dino_score": 0.23,
+        "fga_alignment_score": "1.69",
+        "all_token_scores": [
+            [
+                "a",
+                0.19
+            ],
+            [
+                "woman",
+                0.39
+            ],
+            [
+                "looks",
+                0.25
+            ],
+            [
+                "down",
+                0.47
+            ],
+            [
+                "to",
+                0.3
+            ],
+            [
+                "her",
+                0.25
+            ],
+            [
+                "left",
+                0.42
+            ],
+            [
+                ",",
+                0.2
+            ],
+            [
+                "her",
+                0.17
+            ],
+            [
+                "mouth",
+                0.09
+            ],
+            [
+                "slightly",
+                0.21
+            ],
+            [
+                "open",
+                0.08
+            ],
+            [
+                "in",
+                0.14
+            ],
+            [
+                "a",
+                0.14
+            ],
+            [
+                "laugh",
+                0.07
+            ],
+            [
+                ",",
+                0.23
+            ],
+            [
+                "while",
+                0.22
+            ],
+            [
+                "holding",
+                0.46
+            ],
+            [
+                "a",
+                0.36
+            ],
+            [
+                "coffee",
+                0.75
+            ],
+            [
+                "cup",
+                0.74
+            ]
+        ]
+    },
+    {
+        "id": 14,
+        "image": "14.jpg",
+        "prompt": "A woman looks sideways toward the left, brows raised, as if reacting in surprise",
+        "gt_expression": "surprise",
+        "gt_gender": "Female",
+        "gt_pose": "Head_Turn_Left",
+        "vlm_expression": "others",
+        "expression_correct": 0,
+        "scenario_reasoning": "- Extracted Context: brows raised\n- Visual Evidence: The person's brows are raised.\n- Match Score: 1.0",
+        "scenario_score": 1.0,
+        "mivolo_gender": "male",
+        "mivolo_age": 47.8,
+        "gender_correct": 0,
+        "id_similarity": 0.69,
+        "pose_prediction": "No_Body_Detected",
+        "pose_correct": 0,
+        "clip_t2i_score": 0.22,
+        "clip_i2i_score": 0.68,
+        "dino_score": 0.6,
+        "fga_alignment_score": "1.04",
+        "all_token_scores": [
+            [
+                "a",
+                0.04
+            ],
+            [
+                "woman",
+                0.01
+            ],
+            [
+                "looks",
+                0.04
+            ],
+            [
+                "sideways",
+                0.17
+            ],
+            [
+                "toward",
+                0.08
+            ],
+            [
+                "the",
+                0.08
+            ],
+            [
+                "left",
+                0.21
+            ],
+            [
+                ",",
+                0.06
+            ],
+            [
+                "brows",
+                0.13
+            ],
+            [
+                "raised",
+                0.07
+            ],
+            [
+                ",",
+                0.15
+            ],
+            [
+                "as",
+                0.13
+            ],
+            [
+                "if",
+                0.09
+            ],
+            [
+                "reacting",
+                0.07
+            ],
+            [
+                "in",
+                0.03
+            ],
+            [
+                "surprise",
+                0.03
+            ]
+        ]
+    },
+    {
+        "id": 15,
+        "image": "15.jpg",
+        "prompt": "A woman looks upward with her head tilted back slightly, expressing joy and laughter",
+        "gt_expression": "happy",
+        "gt_gender": "Female",
+        "gt_pose": "Frontal",
+        "vlm_expression": "surprise",
+        "expression_correct": 0,
+        "scenario_reasoning": "- Extracted Context: ...\n- Visual Evidence: ...\n- Match Score: ...\n\nBased on the image provided, here is the analysis:\n\n- Extracted Context: The unique situational descriptor from the text is \"expressing joy and laughter.\"\n- Visual Evidence: The image shows a man with a mustache and a hat, looking upward with a somewhat serious expression. There is no clear indication of joy or laughter.\n- Match Score: 0.0\n\nThe visual content does not match the unique situational descriptor of \"expressing joy and laughter.\"",
+        "scenario_score": 0.0,
+        "mivolo_gender": "male",
+        "mivolo_age": 37.9,
+        "gender_correct": 0,
+        "id_similarity": 0.47,
+        "pose_prediction": "Body_Turn_Right_Face_Front",
+        "pose_correct": 0,
+        "clip_t2i_score": 0.16,
+        "clip_i2i_score": 0.69,
+        "dino_score": 0.48,
+        "fga_alignment_score": "1.22",
+        "all_token_scores": [
+            [
+                "a",
+                0.1
+            ],
+            [
+                "woman",
+                0.02
+            ],
+            [
+                "looks",
+                0.18
+            ],
+            [
+                "upward",
+                0.27
+            ],
+            [
+                "with",
+                0.07
+            ],
+            [
+                "her",
+                0.02
+            ],
+            [
+                "head",
+                0.66
+            ],
+            [
+                "tilted",
+                0.42
+            ],
+            [
+                "back",
+                0.27
+            ],
+            [
+                "slightly",
+                0.35
+            ],
+            [
+                ",",
+                0.17
+            ],
+            [
+                "expressing",
+                0.06
+            ],
+            [
+                "joy",
+                0.03
+            ],
+            [
+                "and",
+                0.06
+            ],
+            [
+                "laughter",
+                0.02
+            ]
+        ]
+    },
+    {
+        "id": 16,
+        "image": "16.jpg",
+        "prompt": "A woman tilts her head backward with eyes closed, expressing satisfaction and calmness",
+        "gt_expression": "neutral",
+        "gt_gender": "Female",
+        "gt_pose": "Frontal",
+        "vlm_expression": "surprise",
+        "expression_correct": 0,
+        "scenario_reasoning": "- Extracted Context: ...\n- Visual Evidence: ...\n- Match Score: ...\n\nBased on the image provided, here is the analysis:\n\nStep 1: Text Extraction (Mental Process)\n- The unique situational descriptor from the input text is \"tilts her head backward with eyes closed.\"\n\nStep 2: Visual Verification\n- The visual evidence from the image shows a person tilting their head backward with eyes closed.\n\nOutput Format:\n- Extracted Context: tilts her head backward with eyes closed\n- Visual Evidence: The person in the image is tilting their head backward with eyes closed.\n- Match Score: 1.0",
+        "scenario_score": 1.0,
+        "mivolo_gender": "male",
+        "mivolo_age": 38.5,
+        "gender_correct": 0,
+        "id_similarity": 0.48,
+        "pose_prediction": "Head_Turn_Right",
+        "pose_correct": 0,
+        "clip_t2i_score": 0.24,
+        "clip_i2i_score": 0.6,
+        "dino_score": 0.39,
+        "fga_alignment_score": "1.79",
+        "all_token_scores": [
+            [
+                "a",
+                0.18
+            ],
+            [
+                "woman",
+                0.25
+            ],
+            [
+                "tilt",
+                0.34
+            ],
+            [
+                "##s",
+                0.25
+            ],
+            [
+                "her",
+                0.13
+            ],
+            [
+                "head",
+                0.59
+            ],
+            [
+                "backward",
+                0.38
+            ],
+            [
+                "with",
+                0.19
+            ],
+            [
+                "eyes",
+                0.51
+            ],
+            [
+                "closed",
+                0.09
+            ],
+            [
+                ",",
+                0.24
+            ],
+            [
+                "expressing",
+                0.25
+            ],
+            [
+                "satisfaction",
+                0.2
+            ],
+            [
+                "and",
+                0.15
+            ],
+            [
+                "calm",
+                0.1
+            ],
+            [
+                "##ness",
+                0.18
+            ]
+        ]
+    },
+    {
+        "id": 17,
+        "image": "17.jpg",
+        "prompt": "A woman with her head tilted right and eyes half-closed gives a soft, dreamy smile",
+        "gt_expression": "happy",
+        "gt_gender": "Female",
+        "gt_pose": "Head_Tilt_Right",
+        "vlm_expression": "happy",
+        "expression_correct": 1,
+        "scenario_reasoning": "- Extracted Context: eyes half-closed\n- Visual Evidence: The person's eyes are not clearly visible due to the angle and the presence of a mustache, but there is no clear indication of eyes being half-closed.\n- Match Score: 0.0",
+        "scenario_score": 0.0,
+        "mivolo_gender": "male",
+        "mivolo_age": 38.2,
+        "gender_correct": 0,
+        "id_similarity": null,
+        "pose_prediction": "Frontal",
+        "pose_correct": 0,
+        "clip_t2i_score": 0.19,
+        "clip_i2i_score": 0.65,
+        "dino_score": 0.46,
+        "fga_alignment_score": "1.06",
+        "all_token_scores": [
+            [
+                "a",
+                0.07
+            ],
+            [
+                "woman",
+                0.01
+            ],
+            [
+                "with",
+                0.04
+            ],
+            [
+                "her",
+                0.01
+            ],
+            [
+                "head",
+                0.5
+            ],
+            [
+                "tilted",
+                0.2
+            ],
+            [
+                "right",
+                0.28
+            ],
+            [
+                "and",
+                0.09
+            ],
+            [
+                "eyes",
+                0.12
+            ],
+            [
+                "half",
+                0.19
+            ],
+            [
+                "-",
+                0.17
+            ],
+            [
+                "closed",
+                0.06
+            ],
+            [
+                "gives",
+                0.04
+            ],
+            [
+                "a",
+                0.07
+            ],
+            [
+                "soft",
+                0.27
+            ],
+            [
+                ",",
+                0.12
+            ],
+            [
+                "dream",
+                0.11
+            ],
+            [
+                "##y",
+                0.14
+            ],
+            [
+                "smile",
+                0.03
+            ]
+        ]
+    },
+    {
+        "id": 18,
+        "image": "18.jpg",
+        "prompt": "A young man looks straight but raises his eyebrows in curiosity, head slightly leaned forward",
+        "gt_expression": "confuse",
+        "gt_gender": "Male",
+        "gt_pose": "Frontal",
+        "vlm_expression": "neutral",
+        "expression_correct": 0,
+        "scenario_reasoning": "- Extracted Context: raises his eyebrows in curiosity, head slightly leaned forward\n- Visual Evidence: The person in the image has a neutral expression with no visible eyebrow raise or head lean forward.\n- Match Score: 0.0",
+        "scenario_score": 0.0,
+        "mivolo_gender": "male",
+        "mivolo_age": 45.4,
+        "gender_correct": 1,
+        "id_similarity": 0.7,
+        "pose_prediction": "Head_Turn_Left",
+        "pose_correct": 0,
+        "clip_t2i_score": 0.24,
+        "clip_i2i_score": 0.68,
+        "dino_score": 0.57,
+        "fga_alignment_score": "1.58",
+        "all_token_scores": [
+            [
+                "a",
+                0.22
+            ],
+            [
+                "young",
+                0.09
+            ],
+            [
+                "man",
+                0.35
+            ],
+            [
+                "looks",
+                0.29
+            ],
+            [
+                "straight",
+                0.28
+            ],
+            [
+                "but",
+                0.18
+            ],
+            [
+                "raises",
+                0.05
+            ],
+            [
+                "his",
+                0.16
+            ],
+            [
+                "eyebrows",
+                0.28
+            ],
+            [
+                "in",
+                0.13
+            ],
+            [
+                "curiosity",
+                0.33
+            ],
+            [
+                ",",
+                0.26
+            ],
+            [
+                "head",
+                0.73
+            ],
+            [
+                "slightly",
+                0.41
+            ],
+            [
+                "leaned",
+                0.42
+            ],
+            [
+                "forward",
+                0.39
+            ]
+        ]
+    },
+    {
+        "id": 19,
+        "image": "19.jpg",
+        "prompt": "A young woman tilts her head downward with a warm grin as she gazes at a cat resting on her lap",
+        "gt_expression": "happy",
+        "gt_gender": "Female",
+        "gt_pose": "Frontal",
+        "vlm_expression": "others",
+        "expression_correct": 0,
+        "scenario_reasoning": "- Extracted Context: \"cat resting on her lap\"\n- Visual Evidence: The image shows a close-up of a pink and purple object, possibly a container or a toy, with no visible cat or person.\n- Match Score: 0.0",
+        "scenario_score": 0.0,
+        "mivolo_gender": "female",
+        "mivolo_age": 26.5,
+        "gender_correct": 1,
+        "id_similarity": null,
+        "pose_prediction": "No_Body_Detected",
+        "pose_correct": 0,
+        "clip_t2i_score": 0.17,
+        "clip_i2i_score": 0.52,
+        "dino_score": 0.03,
+        "fga_alignment_score": "1.04",
+        "all_token_scores": [
+            [
+                "a",
+                0.02
+            ],
+            [
+                "young",
+                0.04
+            ],
+            [
+                "woman",
+                0.01
+            ],
+            [
+                "tilt",
+                0.11
+            ],
+            [
+                "##s",
+                0.03
+            ],
+            [
+                "her",
+                0.02
+            ],
+            [
+                "head",
+                0.15
+            ],
+            [
+                "downward",
+                0.16
+            ],
+            [
+                "with",
+                0.02
+            ],
+            [
+                "a",
+                0.02
+            ],
+            [
+                "warm",
+                0.04
+            ],
+            [
+                "grin",
+                0.01
+            ],
+            [
+                "as",
+                0.04
+            ],
+            [
+                "she",
+                0.02
+            ],
+            [
+                "gazes",
+                0.02
+            ],
+            [
+                "at",
+                0.01
+            ],
+            [
+                "a",
+                0.01
+            ],
+            [
+                "cat",
+                0.01
+            ],
+            [
+                "resting",
+                0.05
+            ],
+            [
+                "on",
+                0.01
+            ],
+            [
+                "her",
+                0.02
+            ],
+            [
+                "lap",
+                0.05
+            ]
+        ]
+    }
+]
