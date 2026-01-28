@@ -19,7 +19,7 @@ WEIGHTS = {
     'id':         0.32
 }
 
-st.set_page_config(layout="wide", page_title="Face Swap & EvalMuse Benchmark", page_icon="🏆")
+st.set_page_config(layout="wide", page_title="Personalization", page_icon=":koala:")
 
 # ==========================================
 # 📂 工具函式
