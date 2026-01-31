@@ -10,8 +10,8 @@ import numpy as np
 WEIGHTS = {
     'expression': 0.17,
     'scenario':   0.17,
-    'gender':     0.17,
-    'pose':       0.17,
+    # 'gender':     0.17,
+    'pose':       0.34,
     'id':         0.32
 }
 
@@ -26,7 +26,7 @@ def calculate_final_score(item):
     s_scen = float(item.get('scenario_score', 0.0))
     
     # 3. Gender (0 or 1)
-    s_gen = float(item.get('gender_correct', 0))
+    # s_gen = float(item.get('gender_correct', 0))
     
     # 4. Pose (0 or 1)
     s_pose = float(item.get('pose_correct', 0))
@@ -38,7 +38,7 @@ def calculate_final_score(item):
     else:
         try:
             s_id = float(raw_id)
-            # 確保 ID 分數在 0~1 之間 (有時候 cosine sim 會有一點誤差)
+            # 確保 ID 分數在 0~1 之間
             s_id = max(0.0, min(s_id, 1.0))
         except ValueError:
             s_id = 0.0
@@ -47,7 +47,7 @@ def calculate_final_score(item):
     final_score = (
         (s_exp  * WEIGHTS['expression']) +
         (s_scen * WEIGHTS['scenario']) +
-        (s_gen  * WEIGHTS['gender']) +
+        # (s_gen  * WEIGHTS['gender']) +
         (s_pose * WEIGHTS['pose']) +
         (s_id   * WEIGHTS['id'])
     )
@@ -81,7 +81,7 @@ def main(json_path, output_csv):
             'Final_Score': score,
             'Exp (17%)': item.get('expression_correct', 0),
             'Scen (17%)': item.get('scenario_score', 0),
-            'Gen (17%)': item.get('gender_correct', 0),
+            # 'Gen (17%)': item.get('gender_correct', 0),
             'Pose (17%)': item.get('pose_correct', 0),
             'ID_Sim (32%)': clean_id_val,
             # 其他資訊方便除錯
@@ -109,7 +109,7 @@ def main(json_path, output_csv):
     print(f"Average ID Similarity: {avg_id:.4f}")
     print(f"Expression Accuracy: {df['Exp (17%)'].mean()*100:.1f}%")
     print(f"Scenario Accuracy  : {df['Scen (17%)'].mean()*100:.1f}%")
-    print(f"Gender Accuracy    : {df['Gen (17%)'].mean()*100:.1f}%")
+    # print(f"Gender Accuracy    : {df['Gen (17%)'].mean()*100:.1f}%")
     print(f"Pose Accuracy      : {df['Pose (17%)'].mean()*100:.1f}%")
     print("-" * 50)
     
