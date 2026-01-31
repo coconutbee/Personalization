@@ -1,3 +1,4 @@
+import math
 import streamlit as st
 import json
 import os
@@ -41,7 +42,24 @@ def calculate_score(item):
         (s_pose * WEIGHTS['pose']) +
         (s_id   * WEIGHTS['id'])
     )
-    return round(weighted_sum * 100, 2)
+    return round(weighted_sum, 2)
+
+
+def normalize(raw_score):
+    """
+    將 FGA-BLIP2 的 Overall Score 進行正規化。
+    Args:
+        raw_score (float): 模型輸出的原始 Logit 分數 (1~5)
+        
+    """
+    # 1. 定義邊界 (根據官方圖表)
+    MIN_VAL = 1.0
+    MAX_VAL = 5.0
+    
+    # 3. Min-Max 正規化公式
+    normalized_score = ((raw_score - MIN_VAL) / (MAX_VAL - MIN_VAL))
+    
+    return round(normalized_score, 2)
 
 @st.cache_data
 def load_and_process_data():
@@ -54,6 +72,7 @@ def load_and_process_data():
         item['final_score'] = calculate_score(item)
         # 讀取 EvalMuse 分數
         item['fga_alignment_score_val'] = float(item.get('fga_alignment_score', 0) or 0)
+        item['fga_alignment_score_val'] = normalize(item['fga_alignment_score_val'])
         # 讀取 CLIP 分數
         item['clip_t2i_val'] = float(item.get('clip_t2i_score', 0) or 0)
         item['clip_i2i_val'] = float(item.get('clip_i2i_score', 0) or 0)
@@ -134,11 +153,11 @@ def main():
         st.markdown("#### 🎯 Metrics Comparison")
         # 擴展為 5 欄以容納所有分數
         k1, k2, k3, k4, k5 = st.columns(5)
-        k1.metric("🏆 Our Scoring Module", f"{item['final_score']:.1f}")
+        k1.metric("🏆 Our Scoring Module", f"{item['final_score']:.2f}")
         k2.metric("🎨 EvalMuse", f"{item['fga_alignment_score_val']:.2f}")
         k3.metric("📝 CLIP T2I", f"{item['clip_t2i_val']:.2f}")
         k4.metric("🖼️ CLIP I2I", f"{item['clip_i2i_val']:.2f}")
-        k5.metric("🦖 DINO", f"{float(item.get('dino_score', 0))*100:.1f}")
+        k5.metric("🦖 DINO", f"{float(item.get('dino_score', 0)):.2f}")
         
         st.divider()
         
@@ -173,10 +192,10 @@ def main():
         df_all = pd.DataFrame(data_list)
         avg_data = [
             {"Metric": "🏆 Final Score", "Score": df_all['final_score'].mean()},
-            {"Metric": "🎨 EvalMuse (x50)", "Score": df_all['fga_alignment_score_val'].mean() * 50},
-            {"Metric": "📝 CLIP T2I (x100)", "Score": df_all['clip_t2i_val'].mean() * 100},
-            {"Metric": "🖼️ CLIP I2I (x100)", "Score": df_all['clip_i2i_val'].mean() * 100},
-            {"Metric": "🦖 DINO Score (x100)", "Score": df_all['dino_score'].fillna(0).astype(float).mean() * 100},
+            {"Metric": "🎨 EvalMuse", "Score": df_all['fga_alignment_score_val'].mean()},
+            {"Metric": "📝 CLIP T2I", "Score": df_all['clip_t2i_val'].mean()},
+            {"Metric": "🖼️ CLIP I2I", "Score": df_all['clip_i2i_val'].mean()},
+            {"Metric": "🦖 DINO Score", "Score": df_all['dino_score'].fillna(0).astype(float).mean()},
         ]
         st.altair_chart(alt.Chart(pd.DataFrame(avg_data)).mark_bar().encode(
             x='Score:Q', y=alt.Y('Metric:N', sort='-x'), color='Metric:N'

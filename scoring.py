@@ -53,7 +53,7 @@ def calculate_final_score(item):
     )
     
     # 轉換為百分制 (0~100)
-    return round(final_score * 100, 2), s_id
+    return round(final_score, 2), s_id
 
 def main(json_path, output_csv):
     if not os.path.exists(json_path):

@@ -16,7 +16,10 @@
         "id_similarity": 0.72,
         "pose_prediction": "No_Body_Detected",
         "pose_correct": 0,
-        "final_score": 57.04
+        "clip_t2i_score": 0.21,
+        "clip_i2i_score": 0.73,
+        "dino_score": 0.61,
+        "final_score": 0.57
     },
     {
         "id": 1,
@@ -35,7 +38,10 @@
         "id_similarity": null,
         "pose_prediction": "Frontal",
         "pose_correct": 1,
-        "final_score": 34.0
+        "clip_t2i_score": 0.18,
+        "clip_i2i_score": 0.67,
+        "dino_score": 0.44,
+        "final_score": 0.34
     },
     {
         "id": 2,
@@ -54,6 +60,9 @@
         "id_similarity": null,
         "pose_prediction": "Frontal",
         "pose_correct": 0,
+        "clip_t2i_score": 0.2,
+        "clip_i2i_score": 0.69,
+        "dino_score": 0.54,
         "final_score": 0.0
     },
     {
@@ -73,7 +82,10 @@
         "id_similarity": 0.5,
         "pose_prediction": "Head_Turn_Right",
         "pose_correct": 0,
-        "final_score": 16.0
+        "clip_t2i_score": 0.23,
+        "clip_i2i_score": 0.65,
+        "dino_score": 0.41,
+        "final_score": 0.16
     },
     {
         "id": 4,
@@ -92,7 +104,10 @@
         "id_similarity": 0.38,
         "pose_prediction": "Back_View_Side_Looking_Away",
         "pose_correct": 0,
-        "final_score": 29.16
+        "clip_t2i_score": 0.2,
+        "clip_i2i_score": 0.64,
+        "dino_score": 0.38,
+        "final_score": 0.29
     },
     {
         "id": 5,
@@ -111,7 +126,10 @@
         "id_similarity": null,
         "pose_prediction": "Head_Tilt_Left",
         "pose_correct": 0,
-        "final_score": 17.0
+        "clip_t2i_score": 0.25,
+        "clip_i2i_score": 0.72,
+        "dino_score": 0.28,
+        "final_score": 0.17
     },
     {
         "id": 6,
@@ -130,7 +148,10 @@
         "id_similarity": 0.6,
         "pose_prediction": "Frontal",
         "pose_correct": 0,
-        "final_score": 36.2
+        "clip_t2i_score": 0.23,
+        "clip_i2i_score": 0.7,
+        "dino_score": 0.56,
+        "final_score": 0.36
     },
     {
         "id": 7,
@@ -149,7 +170,10 @@
         "id_similarity": 0.21,
         "pose_prediction": "Body_Lean_Left",
         "pose_correct": 0,
-        "final_score": 20.32
+        "clip_t2i_score": 0.28,
+        "clip_i2i_score": 0.61,
+        "dino_score": 0.58,
+        "final_score": 0.2
     },
     {
         "id": 8,
@@ -168,7 +192,10 @@
         "id_similarity": 0.47,
         "pose_prediction": "Frontal",
         "pose_correct": 0,
-        "final_score": 28.64
+        "clip_t2i_score": 0.25,
+        "clip_i2i_score": 0.63,
+        "dino_score": 0.58,
+        "final_score": 0.29
     },
     {
         "id": 9,
@@ -187,7 +214,10 @@
         "id_similarity": 0.58,
         "pose_prediction": "Head_Slight_Right",
         "pose_correct": 0,
-        "final_score": 35.56
+        "clip_t2i_score": 0.23,
+        "clip_i2i_score": 0.62,
+        "dino_score": 0.47,
+        "final_score": 0.36
     },
     {
         "id": 10,
@@ -206,7 +236,10 @@
         "id_similarity": 0.47,
         "pose_prediction": "Body_Lean_Left",
         "pose_correct": 0,
-        "final_score": 15.04
+        "clip_t2i_score": 0.22,
+        "clip_i2i_score": 0.72,
+        "dino_score": 0.32,
+        "final_score": 0.15
     },
     {
         "id": 11,
@@ -225,7 +258,10 @@
         "id_similarity": 0.37,
         "pose_prediction": "Body_Lean_Left",
         "pose_correct": 0,
-        "final_score": 11.84
+        "clip_t2i_score": 0.21,
+        "clip_i2i_score": 0.76,
+        "dino_score": 0.45,
+        "final_score": 0.12
     },
     {
         "id": 12,
@@ -244,7 +280,10 @@
         "id_similarity": 0.57,
         "pose_prediction": "Head_Tilt_Right",
         "pose_correct": 0,
-        "final_score": 35.24
+        "clip_t2i_score": 0.22,
+        "clip_i2i_score": 0.68,
+        "dino_score": 0.54,
+        "final_score": 0.35
     },
     {
         "id": 13,
@@ -263,7 +302,10 @@
         "id_similarity": null,
         "pose_prediction": "Head_Turn_Right",
         "pose_correct": 0,
-        "final_score": 17.0
+        "clip_t2i_score": 0.28,
+        "clip_i2i_score": 0.55,
+        "dino_score": 0.23,
+        "final_score": 0.17
     },
     {
         "id": 14,
@@ -282,7 +324,10 @@
         "id_similarity": 0.69,
         "pose_prediction": "No_Body_Detected",
         "pose_correct": 0,
-        "final_score": 39.08
+        "clip_t2i_score": 0.22,
+        "clip_i2i_score": 0.68,
+        "dino_score": 0.6,
+        "final_score": 0.39
     },
     {
         "id": 15,
@@ -301,7 +346,10 @@
         "id_similarity": 0.47,
         "pose_prediction": "Body_Turn_Right_Face_Front",
         "pose_correct": 0,
-        "final_score": 23.54
+        "clip_t2i_score": 0.16,
+        "clip_i2i_score": 0.69,
+        "dino_score": 0.48,
+        "final_score": 0.24
     },
     {
         "id": 16,
@@ -320,7 +368,10 @@
         "id_similarity": 0.48,
         "pose_prediction": "Head_Turn_Right",
         "pose_correct": 0,
-        "final_score": 15.36
+        "clip_t2i_score": 0.24,
+        "clip_i2i_score": 0.6,
+        "dino_score": 0.39,
+        "final_score": 0.15
     },
     {
         "id": 17,
@@ -339,7 +390,10 @@
         "id_similarity": null,
         "pose_prediction": "Frontal",
         "pose_correct": 0,
-        "final_score": 25.5
+        "clip_t2i_score": 0.19,
+        "clip_i2i_score": 0.65,
+        "dino_score": 0.46,
+        "final_score": 0.26
     },
     {
         "id": 18,
@@ -358,7 +412,10 @@
         "id_similarity": 0.7,
         "pose_prediction": "Head_Turn_Left",
         "pose_correct": 0,
-        "final_score": 22.4
+        "clip_t2i_score": 0.24,
+        "clip_i2i_score": 0.68,
+        "dino_score": 0.57,
+        "final_score": 0.22
     },
     {
         "id": 19,
@@ -377,6 +434,9 @@
         "id_similarity": null,
         "pose_prediction": "No_Body_Detected",
         "pose_correct": 0,
+        "clip_t2i_score": 0.17,
+        "clip_i2i_score": 0.52,
+        "dino_score": 0.03,
         "final_score": 0.0
     }
 ]

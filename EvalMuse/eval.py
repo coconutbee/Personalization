@@ -107,6 +107,7 @@ def eval(args):
     elif args.method == 'infinity': dataset_dir = "./faceswap_results/infinity"
     elif args.method == 'janus': dataset_dir = "./faceswap_results/janus"
     elif args.method == 'showo2': dataset_dir = "./faceswap_results/showo2"
+    elif args.method == 'test': dataset_dir = "./faceswap_results/test"
     
     print(f">>> Dataset Dir: {dataset_dir}")
 

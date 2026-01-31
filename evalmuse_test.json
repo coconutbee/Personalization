@@ -1,0 +1,23 @@
+[
+    {
+        "id": 0,
+        "image": "0.jpg",
+        "prompt": "A man",
+        "gt_expression": "surprise",
+        "gt_gender": "Male",
+        "gt_pose": "Frontal",
+        "vlm_expression": "surprise",
+        "expression_correct": 1,
+        "scenario_reasoning": "- Extracted Context: snowflakes fall on his face\n- Visual Evidence: Snowflakes are visible on the person's hat and face, indicating that it is snowing.\n- Match Score: 1.0",
+        "scenario_score": 1.0,
+        "mivolo_gender": "male",
+        "mivolo_age": 47.1,
+        "gender_correct": 1,
+        "id_similarity": 0.72,
+        "pose_prediction": "No_Body_Detected",
+        "pose_correct": 0,
+        "clip_t2i_score": 0.21,
+        "clip_i2i_score": 0.73,
+        "dino_score": 0.61
+    }
+]
