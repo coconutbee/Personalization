@@ -16,9 +16,6 @@
         "id_similarity": 0.72,
         "pose_prediction": "No_Body_Detected",
         "pose_correct": 0,
-        "clip_t2i_score": 0.21,
-        "clip_i2i_score": 0.73,
-        "dino_score": 0.61,
         "final_score": 0.57
     },
     {
@@ -38,9 +35,6 @@
         "id_similarity": null,
         "pose_prediction": "Frontal",
         "pose_correct": 1,
-        "clip_t2i_score": 0.18,
-        "clip_i2i_score": 0.67,
-        "dino_score": 0.44,
         "final_score": 0.34
     },
     {
@@ -60,9 +54,6 @@
         "id_similarity": null,
         "pose_prediction": "Frontal",
         "pose_correct": 0,
-        "clip_t2i_score": 0.2,
-        "clip_i2i_score": 0.69,
-        "dino_score": 0.54,
         "final_score": 0.0
     },
     {
@@ -82,9 +73,6 @@
         "id_similarity": 0.5,
         "pose_prediction": "Head_Turn_Right",
         "pose_correct": 0,
-        "clip_t2i_score": 0.23,
-        "clip_i2i_score": 0.65,
-        "dino_score": 0.41,
         "final_score": 0.16
     },
     {
@@ -104,9 +92,6 @@
         "id_similarity": 0.38,
         "pose_prediction": "Back_View_Side_Looking_Away",
         "pose_correct": 0,
-        "clip_t2i_score": 0.2,
-        "clip_i2i_score": 0.64,
-        "dino_score": 0.38,
         "final_score": 0.29
     },
     {
@@ -126,9 +111,6 @@
         "id_similarity": null,
         "pose_prediction": "Head_Tilt_Left",
         "pose_correct": 0,
-        "clip_t2i_score": 0.25,
-        "clip_i2i_score": 0.72,
-        "dino_score": 0.28,
         "final_score": 0.17
     },
     {
@@ -148,9 +130,6 @@
         "id_similarity": 0.6,
         "pose_prediction": "Frontal",
         "pose_correct": 0,
-        "clip_t2i_score": 0.23,
-        "clip_i2i_score": 0.7,
-        "dino_score": 0.56,
         "final_score": 0.36
     },
     {
@@ -170,9 +149,6 @@
         "id_similarity": 0.21,
         "pose_prediction": "Body_Lean_Left",
         "pose_correct": 0,
-        "clip_t2i_score": 0.28,
-        "clip_i2i_score": 0.61,
-        "dino_score": 0.58,
         "final_score": 0.2
     },
     {
@@ -192,9 +168,6 @@
         "id_similarity": 0.47,
         "pose_prediction": "Frontal",
         "pose_correct": 0,
-        "clip_t2i_score": 0.25,
-        "clip_i2i_score": 0.63,
-        "dino_score": 0.58,
         "final_score": 0.29
     },
     {
@@ -214,9 +187,6 @@
         "id_similarity": 0.58,
         "pose_prediction": "Head_Slight_Right",
         "pose_correct": 0,
-        "clip_t2i_score": 0.23,
-        "clip_i2i_score": 0.62,
-        "dino_score": 0.47,
         "final_score": 0.36
     },
     {
@@ -236,9 +206,6 @@
         "id_similarity": 0.47,
         "pose_prediction": "Body_Lean_Left",
         "pose_correct": 0,
-        "clip_t2i_score": 0.22,
-        "clip_i2i_score": 0.72,
-        "dino_score": 0.32,
         "final_score": 0.15
     },
     {
@@ -258,9 +225,6 @@
         "id_similarity": 0.37,
         "pose_prediction": "Body_Lean_Left",
         "pose_correct": 0,
-        "clip_t2i_score": 0.21,
-        "clip_i2i_score": 0.76,
-        "dino_score": 0.45,
         "final_score": 0.12
     },
     {
@@ -280,9 +244,6 @@
         "id_similarity": 0.57,
         "pose_prediction": "Head_Tilt_Right",
         "pose_correct": 0,
-        "clip_t2i_score": 0.22,
-        "clip_i2i_score": 0.68,
-        "dino_score": 0.54,
         "final_score": 0.35
     },
     {
@@ -302,9 +263,6 @@
         "id_similarity": null,
         "pose_prediction": "Head_Turn_Right",
         "pose_correct": 0,
-        "clip_t2i_score": 0.28,
-        "clip_i2i_score": 0.55,
-        "dino_score": 0.23,
         "final_score": 0.17
     },
     {
@@ -324,9 +282,6 @@
         "id_similarity": 0.69,
         "pose_prediction": "No_Body_Detected",
         "pose_correct": 0,
-        "clip_t2i_score": 0.22,
-        "clip_i2i_score": 0.68,
-        "dino_score": 0.6,
         "final_score": 0.39
     },
     {
@@ -346,9 +301,6 @@
         "id_similarity": 0.47,
         "pose_prediction": "Body_Turn_Right_Face_Front",
         "pose_correct": 0,
-        "clip_t2i_score": 0.16,
-        "clip_i2i_score": 0.69,
-        "dino_score": 0.48,
         "final_score": 0.24
     },
     {
@@ -368,9 +320,6 @@
         "id_similarity": 0.48,
         "pose_prediction": "Head_Turn_Right",
         "pose_correct": 0,
-        "clip_t2i_score": 0.24,
-        "clip_i2i_score": 0.6,
-        "dino_score": 0.39,
         "final_score": 0.15
     },
     {
@@ -390,9 +339,6 @@
         "id_similarity": null,
         "pose_prediction": "Frontal",
         "pose_correct": 0,
-        "clip_t2i_score": 0.19,
-        "clip_i2i_score": 0.65,
-        "dino_score": 0.46,
         "final_score": 0.26
     },
     {
@@ -412,9 +358,6 @@
         "id_similarity": 0.7,
         "pose_prediction": "Head_Turn_Left",
         "pose_correct": 0,
-        "clip_t2i_score": 0.24,
-        "clip_i2i_score": 0.68,
-        "dino_score": 0.57,
         "final_score": 0.22
     },
     {
@@ -434,9 +377,6 @@
         "id_similarity": null,
         "pose_prediction": "No_Body_Detected",
         "pose_correct": 0,
-        "clip_t2i_score": 0.17,
-        "clip_i2i_score": 0.52,
-        "dino_score": 0.03,
         "final_score": 0.0
     }
 ]

@@ -165,7 +165,7 @@ def run_id_evaluation(method, swapped_dir, reference_dir, json_path):
             valid_pairs += 1
             success_count += 1
         else:
-            item['id_similarity'] = None
+            item['id_similarity'] = 0
             if feat_ref is None: failed_logs.append(f"Face detect fail: Ref {os.path.basename(ref_path)}")
             if feat_swap is None: failed_logs.append(f"Face detect fail: Swap {found_name}")
 

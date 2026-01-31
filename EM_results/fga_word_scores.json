@@ -16,9 +16,6 @@
         "id_similarity": 0.72,
         "pose_prediction": "No_Body_Detected",
         "pose_correct": 0,
-        "clip_t2i_score": 0.21,
-        "clip_i2i_score": 0.73,
-        "dino_score": 0.61,
         "fga_alignment_score": "1.25",
         "all_token_scores": [
             [
@@ -116,9 +113,6 @@
         "id_similarity": null,
         "pose_prediction": "Frontal",
         "pose_correct": 1,
-        "clip_t2i_score": 0.18,
-        "clip_i2i_score": 0.67,
-        "dino_score": 0.44,
         "fga_alignment_score": "1.16",
         "all_token_scores": [
             [
@@ -188,9 +182,6 @@
         "id_similarity": null,
         "pose_prediction": "Frontal",
         "pose_correct": 0,
-        "clip_t2i_score": 0.2,
-        "clip_i2i_score": 0.69,
-        "dino_score": 0.54,
         "fga_alignment_score": "1.23",
         "all_token_scores": [
             [
@@ -288,9 +279,6 @@
         "id_similarity": 0.5,
         "pose_prediction": "Head_Turn_Right",
         "pose_correct": 0,
-        "clip_t2i_score": 0.23,
-        "clip_i2i_score": 0.65,
-        "dino_score": 0.41,
         "fga_alignment_score": "1.20",
         "all_token_scores": [
             [
@@ -384,9 +372,6 @@
         "id_similarity": 0.38,
         "pose_prediction": "Back_View_Side_Looking_Away",
         "pose_correct": 0,
-        "clip_t2i_score": 0.2,
-        "clip_i2i_score": 0.64,
-        "dino_score": 0.38,
         "fga_alignment_score": "1.10",
         "all_token_scores": [
             [
@@ -480,9 +465,6 @@
         "id_similarity": null,
         "pose_prediction": "Head_Tilt_Left",
         "pose_correct": 0,
-        "clip_t2i_score": 0.25,
-        "clip_i2i_score": 0.72,
-        "dino_score": 0.28,
         "fga_alignment_score": "2.14",
         "all_token_scores": [
             [
@@ -564,9 +546,6 @@
         "id_similarity": 0.6,
         "pose_prediction": "Frontal",
         "pose_correct": 0,
-        "clip_t2i_score": 0.23,
-        "clip_i2i_score": 0.7,
-        "dino_score": 0.56,
         "fga_alignment_score": "1.88",
         "all_token_scores": [
             [
@@ -652,9 +631,6 @@
         "id_similarity": 0.21,
         "pose_prediction": "Body_Lean_Left",
         "pose_correct": 0,
-        "clip_t2i_score": 0.28,
-        "clip_i2i_score": 0.61,
-        "dino_score": 0.58,
         "fga_alignment_score": "1.91",
         "all_token_scores": [
             [
@@ -752,9 +728,6 @@
         "id_similarity": 0.47,
         "pose_prediction": "Frontal",
         "pose_correct": 0,
-        "clip_t2i_score": 0.25,
-        "clip_i2i_score": 0.63,
-        "dino_score": 0.58,
         "fga_alignment_score": "2.16",
         "all_token_scores": [
             [
@@ -844,9 +817,6 @@
         "id_similarity": 0.58,
         "pose_prediction": "Head_Slight_Right",
         "pose_correct": 0,
-        "clip_t2i_score": 0.23,
-        "clip_i2i_score": 0.62,
-        "dino_score": 0.47,
         "fga_alignment_score": "1.92",
         "all_token_scores": [
             [
@@ -940,9 +910,6 @@
         "id_similarity": 0.47,
         "pose_prediction": "Body_Lean_Left",
         "pose_correct": 0,
-        "clip_t2i_score": 0.22,
-        "clip_i2i_score": 0.72,
-        "dino_score": 0.32,
         "fga_alignment_score": "1.26",
         "all_token_scores": [
             [
@@ -1040,9 +1007,6 @@
         "id_similarity": 0.37,
         "pose_prediction": "Body_Lean_Left",
         "pose_correct": 0,
-        "clip_t2i_score": 0.21,
-        "clip_i2i_score": 0.76,
-        "dino_score": 0.45,
         "fga_alignment_score": "1.53",
         "all_token_scores": [
             [
@@ -1148,9 +1112,6 @@
         "id_similarity": 0.57,
         "pose_prediction": "Head_Tilt_Right",
         "pose_correct": 0,
-        "clip_t2i_score": 0.22,
-        "clip_i2i_score": 0.68,
-        "dino_score": 0.54,
         "fga_alignment_score": "1.25",
         "all_token_scores": [
             [
@@ -1232,9 +1193,6 @@
         "id_similarity": null,
         "pose_prediction": "Head_Turn_Right",
         "pose_correct": 0,
-        "clip_t2i_score": 0.28,
-        "clip_i2i_score": 0.55,
-        "dino_score": 0.23,
         "fga_alignment_score": "1.69",
         "all_token_scores": [
             [
@@ -1340,9 +1298,6 @@
         "id_similarity": 0.69,
         "pose_prediction": "No_Body_Detected",
         "pose_correct": 0,
-        "clip_t2i_score": 0.22,
-        "clip_i2i_score": 0.68,
-        "dino_score": 0.6,
         "fga_alignment_score": "1.04",
         "all_token_scores": [
             [
@@ -1428,9 +1383,6 @@
         "id_similarity": 0.47,
         "pose_prediction": "Body_Turn_Right_Face_Front",
         "pose_correct": 0,
-        "clip_t2i_score": 0.16,
-        "clip_i2i_score": 0.69,
-        "dino_score": 0.48,
         "fga_alignment_score": "1.22",
         "all_token_scores": [
             [
@@ -1512,9 +1464,6 @@
         "id_similarity": 0.48,
         "pose_prediction": "Head_Turn_Right",
         "pose_correct": 0,
-        "clip_t2i_score": 0.24,
-        "clip_i2i_score": 0.6,
-        "dino_score": 0.39,
         "fga_alignment_score": "1.79",
         "all_token_scores": [
             [
@@ -1600,9 +1549,6 @@
         "id_similarity": null,
         "pose_prediction": "Frontal",
         "pose_correct": 0,
-        "clip_t2i_score": 0.19,
-        "clip_i2i_score": 0.65,
-        "dino_score": 0.46,
         "fga_alignment_score": "1.06",
         "all_token_scores": [
             [
@@ -1700,9 +1646,6 @@
         "id_similarity": 0.7,
         "pose_prediction": "Head_Turn_Left",
         "pose_correct": 0,
-        "clip_t2i_score": 0.24,
-        "clip_i2i_score": 0.68,
-        "dino_score": 0.57,
         "fga_alignment_score": "1.58",
         "all_token_scores": [
             [
@@ -1788,9 +1731,6 @@
         "id_similarity": null,
         "pose_prediction": "No_Body_Detected",
         "pose_correct": 0,
-        "clip_t2i_score": 0.17,
-        "clip_i2i_score": 0.52,
-        "dino_score": 0.03,
         "fga_alignment_score": "1.04",
         "all_token_scores": [
             [

@@ -60,25 +60,20 @@ def get_clip_t2i_score(model, processor, image, text):
         print(f"[CLIP T2I Error] {e}")
         return None
 
-# 2. CLIP Image-to-Image (I2I) [新增]
+# 2. CLIP Image-to-Image (I2I)
 def get_clip_i2i_score(model, processor, img_ref, img_gen):
     try:
-        # 同時輸入兩張圖提取特徵
         inputs = processor(images=[img_ref, img_gen], return_tensors="pt").to(DEVICE)
         
         with torch.no_grad():
-            # 使用 get_image_features 只跑 Vision Encoder
             image_features = model.get_image_features(**inputs)
         
-        # 分別取出 Ref 和 Gen 的特徵
         ref_embed = image_features[0].unsqueeze(0)
         gen_embed = image_features[1].unsqueeze(0)
 
-        # Normalize
         ref_embed = ref_embed / ref_embed.norm(p=2, dim=-1, keepdim=True)
         gen_embed = gen_embed / gen_embed.norm(p=2, dim=-1, keepdim=True)
 
-        # Cosine Similarity
         score = (ref_embed @ gen_embed.t()).item()
         return max(0.0, score)
     except Exception as e:
@@ -118,29 +113,29 @@ def smart_find_swapped_image(base_dir, json_filename):
             return full_path, cand
     return None, None
 
-def smart_find_ref_image(ref_dir, ref_index_str):
-    candidates = [
-        f"{ref_index_str}.jpg",
-        f"{ref_index_str}.png",
-        f"{ref_index_str}.jpeg",
-        f"0_{ref_index_str}.jpg"
-    ]
-    for cand in candidates:
-        full_path = os.path.join(ref_dir, cand)
-        if os.path.exists(full_path):
-            return full_path
+def find_target_by_prompt(base_dir, prompt):
+    if not prompt: return None
+    def normalize_quotes(text):
+        return text.replace("’", "'").replace("‘", "'").strip()
+    target_normalized = normalize_quotes(prompt)
+    
+    if os.path.exists(base_dir):
+        for filename in os.listdir(base_dir):
+            file_no_ext = os.path.splitext(filename)[0]
+            if normalize_quotes(file_no_ext) == target_normalized:
+                return os.path.join(base_dir, filename)
     return None
 
 # ==========================================
 # 主程式
 # ==========================================
-def main(method, swapped_dir, reference_dir, json_path): 
+def main(method, swapped_dir, t2i_dir, json_path): 
     """
-    swapped_dir: 用換臉後的圖片資料夾
-    reference_dir: 與ID對應的參考圖片資料夾
+    swapped_dir: 換臉後的圖片資料夾
+    t2i_dir: 原始 T2I 生成的圖片資料夾 (用於比較結構與原始 Prompt Alignment)
     """
     print(f"📂 Swapped Dir: {swapped_dir}")
-    print(f"📂 Reference Dir: {reference_dir}")
+    print(f"📂 T2I Source Dir: {t2i_dir}")
     
     # 1. 載入模型
     clip_model, clip_proc = load_clip_model()
@@ -156,11 +151,12 @@ def main(method, swapped_dir, reference_dir, json_path):
         
     print(f"📊 Processing {len(data_list)} items...")
     
-    # 統計用列表
+    # --- [MODIFIED] 統計用列表 (分離不同指標) ---
     stats = {
-        'clip_t2i': [],
-        'clip_i2i': [],
-        'dino': []
+        'clip_t2i_orig': [],    # 原始 T2I 圖 vs Prompt
+        'clip_t2i_swap': [],    # 換臉後圖 vs Prompt
+        'clip_struct': [],      # 原始 T2I 圖 vs 換臉後圖 (CLIP)
+        'dino_struct': []       # 原始 T2I 圖 vs 換臉後圖 (DINO)
     }
     
     for item in tqdm(data_list, desc="Calculating Metrics"):
@@ -170,57 +166,63 @@ def main(method, swapped_dir, reference_dir, json_path):
         # --- A. 找生成圖 (Swapped Image) ---
         swapped_path, found_name = smart_find_swapped_image(swapped_dir, raw_filename)
         
+        # 初始化欄位為 None
+        item['clip_t2i_orig_score'] = None
+        item['clip_t2i_swapped_score'] = None
+        item['clip_score'] = None
+        item['dino_score'] = None
+
         if not swapped_path:
-            item['clip_t2i_score'] = None
-            item['clip_i2i_score'] = None
-            item['dino_score'] = None
             continue
             
         try:
-            img_gen = Image.open(swapped_path).convert("RGB")
+            img_swapped = Image.open(swapped_path).convert("RGB") # swapped image
         except:
             continue
 
-        # --- B. 計算 CLIP T2I Score (Text vs Generated Image) ---
-        if prompt:
-            t2i_score = get_clip_t2i_score(clip_model, clip_proc, img_gen, prompt)
-            item['clip_t2i_score'] = float(f'{t2i_score:.2f}')
-            if t2i_score is not None: stats['clip_t2i'].append(t2i_score)
-        else:
-            item['clip_t2i_score'] = None
-
-        # --- C. 找參考圖 (Reference Image) ---
+        # --- B. 找原始 T2I 圖 (Original Generated Image) ---
+        target_path = find_target_by_prompt(t2i_dir, prompt)
+        if not target_path:
+            # 如果找不到原圖，只能算 Swapped 的 T2I 分數，無法算結構分
+            if prompt:
+                t2i_swapped_score = get_clip_t2i_score(clip_model, clip_proc, img_swapped, prompt)
+                item['clip_t2i_swapped_score'] = float(f'{t2i_swapped_score:.4f}')
+                if t2i_swapped_score is not None: stats['clip_t2i_swap'].append(t2i_swapped_score)
+            continue
+            
         try:
-            fname_no_ext = os.path.splitext(found_name)[0]
-            parts = fname_no_ext.split('_')
-            ref_idx_str = parts[0] if len(parts) >= 2 else parts[0]
+            img_orig_t2i = Image.open(target_path).convert("RGB") # t2i generated image
         except:
-            ref_idx_str = "0"
+            continue
 
-        ref_path = smart_find_ref_image(reference_dir, ref_idx_str)
-        
-        # --- D. 計算 Image-to-Image 分數 (Reference vs Generated) ---
-        if ref_path:
-            try:
-                img_ref = Image.open(ref_path).convert("RGB")
-                
-                # 1. CLIP I2I
-                i2i_score = get_clip_i2i_score(clip_model, clip_proc, img_ref, img_gen)
-                item['clip_i2i_score'] = float(f'{i2i_score:.2f}')
-                if i2i_score is not None: stats['clip_i2i'].append(i2i_score)
+        # --- C. 計算 CLIP T2I Score (Prompt Alignment) ---
+        # 1. 原始 T2I 圖 vs Prompt
+        if prompt:
+            t2i_orig_score = get_clip_t2i_score(clip_model, clip_proc, img_orig_t2i, prompt)
+            item['clip_t2i_orig_score'] = float(f'{t2i_orig_score:.2f}')
+            if t2i_orig_score is not None: stats['clip_t2i_orig'].append(t2i_orig_score)
+            
+            # 2. 換臉後圖 vs Prompt
+            t2i_swapped_score = get_clip_t2i_score(clip_model, clip_proc, img_swapped, prompt)
+            item['clip_t2i_swapped_score'] = float(f'{t2i_swapped_score:.2f}')
+            if t2i_swapped_score is not None: stats['clip_t2i_swap'].append(t2i_swapped_score)
 
-                # 2. DINO Score
-                d_score = get_dino_score(dino_model, dino_proc, img_ref, img_gen)
-                item['dino_score'] = float(f'{d_score:.2f}')
-                if d_score is not None: stats['dino'].append(d_score)
+        # --- D. 計算 Image-to-Image 分數 (Structure Preservation) ---
+        # 比較對象：原始 T2I 圖 vs 換臉後圖 (衡量背景與構圖是否改變)
+        try:
+            # 1. CLIP I2I (Structure)
+            c_struct_score = get_clip_i2i_score(clip_model, clip_proc, img_orig_t2i, img_swapped)
+            item['clip_score'] = float(f'{c_struct_score:.2f}')
+            if c_struct_score is not None: stats['clip_struct'].append(c_struct_score)
 
-            except Exception as e:
-                print(f"Error processing I2I: {e}")
-                item['clip_i2i_score'] = None
-                item['dino_score'] = None
-        else:
-            item['clip_i2i_score'] = None
-            item['dino_score'] = None
+            # 2. DINO Score (Structure)
+            d_struct_score = get_dino_score(dino_model, dino_proc, img_orig_t2i, img_swapped)
+            item['dino_score'] = float(f'{d_struct_score:.2f}')
+            if d_struct_score is not None: stats['dino_struct'].append(d_struct_score)
+
+        except Exception as e:
+            print(f"Error processing Structure I2I: {e}")
+
 
     # 3. 存檔與顯示結果
     with open(json_path, 'w', encoding='utf-8') as f:
@@ -228,16 +230,20 @@ def main(method, swapped_dir, reference_dir, json_path):
         
     print(f"\n✅ Done! Updated JSON saved to {json_path}")
     
-    print("-" * 50)
-    print("🏆 Performance Summary")
-    print("-" * 50)
-    if stats['clip_t2i']:
-        print(f"📝 Avg CLIP T2I Score (Text-Gen):  {sum(stats['clip_t2i'])/len(stats['clip_t2i']):.4f}")
-    if stats['clip_i2i']:
-        print(f"🖼️  Avg CLIP I2I Score (Ref-Gen):   {sum(stats['clip_i2i'])/len(stats['clip_i2i']):.4f}")
-    if stats['dino']:
-        print(f"🦖 Avg DINO Score (Ref-Gen):       {sum(stats['dino'])/len(stats['dino']):.4f}")
-    print("-" * 50)
+    # --- [MODIFIED] Summary ---
+    print("\n" + "=" * 60)
+    print("🏆 Performance Summary (Averages)")
+    print("=" * 60)
+    
+    def calc_avg(lst):
+        return sum(lst)/len(lst) if lst else 0.0
+
+    print(f"📝 Prompt Alignment (Original T2I):  {calc_avg(stats['clip_t2i_orig']):.4f}")
+    print(f"📝 Prompt Alignment (Swapped Face):  {calc_avg(stats['clip_t2i_swap']):.4f}")
+    print("-" * 60)
+    print(f"🏗️  Structure Preservation (CLIP):    {calc_avg(stats['clip_struct']):.4f} (Orig vs Swapped)")
+    print(f"🦖 Structure Preservation (DINO):    {calc_avg(stats['dino_struct']):.4f} (Orig vs Swapped)")
+    print("=" * 60)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -252,8 +258,9 @@ if __name__ == '__main__':
         'infinity': './faceswap_results/infinity',
         'showo2': './faceswap_results/showo2'
     }
-    
+    t2i_dir = './pixart_outputs' 
     swapped_dir = path_map.get(args.method, './faceswap_results/pixart')
+    
     reference_dir = './faceswap_results/reference' 
 
-    main(args.method, swapped_dir, reference_dir, args.json)
+    main(args.method, swapped_dir, t2i_dir, args.json)
