@@ -14,8 +14,8 @@ import argparse
 WEIGHTS = {
     'expression': 0.17,
     'scenario':   0.17,
-    'gender':     0.17,
-    'pose':       0.17,
+    # 'gender':     0.17,
+    'pose':       0.34,
     'id':         0.32
 }
 
@@ -27,7 +27,7 @@ st.set_page_config(layout="wide", page_title="Personalization", page_icon=":koal
 def calculate_score(item):
     s_exp  = float(item.get('expression_correct', 0) or 0)
     s_scen = float(item.get('scenario_score', 0.0) or 0.0)
-    s_gen  = float(item.get('gender_correct', 0) or 0)
+    # s_gen  = float(item.get('gender_correct', 0) or 0)
     s_pose = float(item.get('pose_correct', 0) or 0)
     
     raw_id = item.get('id_similarity')
@@ -37,7 +37,7 @@ def calculate_score(item):
     weighted_sum = (
         (s_exp  * WEIGHTS['expression']) +
         (s_scen * WEIGHTS['scenario']) +
-        (s_gen  * WEIGHTS['gender']) +
+        # (s_gen  * WEIGHTS['gender']) +
         (s_pose * WEIGHTS['pose']) +
         (s_id   * WEIGHTS['id'])
     )
@@ -162,8 +162,8 @@ def main():
             {"Metric": "ID Similarity (32%)", "Value": str(item.get('id_similarity', 'N/A'))},
             {"Metric": "Expression (17%)", "Value": f"{item.get('expression_correct')} (GT: {item.get('gt_expression')})"},
             {"Metric": "Scenario (17%)", "Value": str(item.get('scenario_score'))},
-            {"Metric": "Gender (17%)", "Value": f"{item.get('gender_correct')} (GT: {item.get('gt_gender')})"},
-            {"Metric": "Pose (17%)", "Value": f"{item.get('pose_correct')} (GT: {item.get('gt_pose')})"},
+            # {"Metric": "Gender (17%)", "Value": f"{item.get('gender_correct')} (GT: {item.get('gt_gender')})"},
+            {"Metric": "Pose (34%)", "Value": f"{item.get('pose_correct')} (GT: {item.get('gt_pose')})"},
             {"Metric": "CLIP Text-Image Score", "Value": f"{item['clip_t2i_val']:.3f}"},
             {"Metric": "CLIP Image-Image Score", "Value": f"{item['clip_i2i_val']:.3f}"}
         ])

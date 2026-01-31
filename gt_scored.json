@@ -16,7 +16,7 @@
         "id_similarity": 0.72,
         "pose_prediction": "No_Body_Detected",
         "pose_correct": 0,
-        "final_score": 74.04
+        "final_score": 57.04
     },
     {
         "id": 1,
@@ -32,10 +32,10 @@
         "mivolo_gender": "male",
         "mivolo_age": 38.7,
         "gender_correct": 0,
-        "id_similarity": 0.66,
-        "pose_prediction": "Body_Turn_Right_Face_Front",
-        "pose_correct": 0,
-        "final_score": 21.12
+        "id_similarity": null,
+        "pose_prediction": "Frontal",
+        "pose_correct": 1,
+        "final_score": 34.0
     },
     {
         "id": 2,
@@ -52,7 +52,7 @@
         "mivolo_age": 36.7,
         "gender_correct": 0,
         "id_similarity": null,
-        "pose_prediction": "Body_Turn_Left_Face_Front",
+        "pose_prediction": "Frontal",
         "pose_correct": 0,
         "final_score": 0.0
     },
@@ -71,7 +71,7 @@
         "mivolo_age": 41.1,
         "gender_correct": 0,
         "id_similarity": 0.5,
-        "pose_prediction": "Body_Turn_Left_Face_Front",
+        "pose_prediction": "Head_Turn_Right",
         "pose_correct": 0,
         "final_score": 16.0
     },
@@ -87,10 +87,10 @@
         "scenario_reasoning": "- Extracted Context: lips slightly parted\n- Visual Evidence: The image shows a man with his lips slightly parted, which aligns with the description.\n- Match Score: 1.0",
         "scenario_score": 1.0,
         "mivolo_gender": "male",
-        "mivolo_age": 47.8,
+        "mivolo_age": 47.9,
         "gender_correct": 0,
         "id_similarity": 0.38,
-        "pose_prediction": "Head_Tilt_Left",
+        "pose_prediction": "Back_View_Side_Looking_Away",
         "pose_correct": 0,
         "final_score": 29.16
     },
@@ -103,15 +103,15 @@
         "gt_pose": "Frontal",
         "vlm_expression": "others",
         "expression_correct": 0,
-        "scenario_reasoning": "- Extracted Context: \"sunlight shines on his face\"\n- Visual Evidence: The image shows a man with light shining on his face, but it appears to be artificial lighting rather than sunlight.\n- Match Score: 0.5",
-        "scenario_score": 0.5,
+        "scenario_reasoning": "- Extracted Context: sunlight shines on his face\n- Visual Evidence: The image shows a man with light shining on his face, creating a warm glow.\n- Match Score: 1.0",
+        "scenario_score": 1.0,
         "mivolo_gender": "male",
         "mivolo_age": 39.3,
         "gender_correct": 1,
         "id_similarity": null,
         "pose_prediction": "Head_Tilt_Left",
         "pose_correct": 0,
-        "final_score": 25.5
+        "final_score": 17.0
     },
     {
         "id": 6,
@@ -122,7 +122,7 @@
         "gt_pose": "Head_Tilt_Right",
         "vlm_expression": "others",
         "expression_correct": 0,
-        "scenario_reasoning": "- Extracted Context: \"showing a puzzled or questioning look\"\n- Visual Evidence: The man has a puzzled or questioning look on his face.\n- Match Score: 1.0",
+        "scenario_reasoning": "- Extracted Context: puzzled or questioning look\n- Visual Evidence: The man has a puzzled or questioning look on his face.\n- Match Score: 1.0",
         "scenario_score": 1.0,
         "mivolo_gender": "male",
         "mivolo_age": 43.1,
@@ -130,7 +130,7 @@
         "id_similarity": 0.6,
         "pose_prediction": "Frontal",
         "pose_correct": 0,
-        "final_score": 53.2
+        "final_score": 36.2
     },
     {
         "id": 7,
@@ -147,9 +147,9 @@
         "mivolo_age": 35.5,
         "gender_correct": 1,
         "id_similarity": 0.21,
-        "pose_prediction": "Back_Over_Shoulder",
+        "pose_prediction": "Body_Lean_Left",
         "pose_correct": 0,
-        "final_score": 37.32
+        "final_score": 20.32
     },
     {
         "id": 8,
@@ -163,12 +163,12 @@
         "scenario_reasoning": "- Extracted Context: remembering something\n- Visual Evidence: The man is looking up and to his left with a thoughtful expression.\n- Match Score: 0.8",
         "scenario_score": 0.8,
         "mivolo_gender": "male",
-        "mivolo_age": 39.5,
+        "mivolo_age": 39.4,
         "gender_correct": 1,
         "id_similarity": 0.47,
         "pose_prediction": "Frontal",
         "pose_correct": 0,
-        "final_score": 45.64
+        "final_score": 28.64
     },
     {
         "id": 9,
@@ -185,9 +185,9 @@
         "mivolo_age": 36.8,
         "gender_correct": 1,
         "id_similarity": 0.58,
-        "pose_prediction": "Body_Turn_Left_Face_Front",
+        "pose_prediction": "Head_Slight_Right",
         "pose_correct": 0,
-        "final_score": 52.56
+        "final_score": 35.56
     },
     {
         "id": 10,
@@ -198,7 +198,7 @@
         "gt_pose": "Head_Tilt_Left",
         "vlm_expression": "surprise",
         "expression_correct": 0,
-        "scenario_reasoning": "- Extracted Context: eyes glancing downward toward his pet dog\n- Visual Evidence: The man is looking slightly upward, not downward toward a pet dog.\n- Match Score: 0.0",
+        "scenario_reasoning": "- Extracted Context: eyes glancing downward toward his pet dog\n- Visual Evidence: The man is looking slightly to the side, but there is no visible pet dog in the image.\n- Match Score: 0.0",
         "scenario_score": 0.0,
         "mivolo_gender": "male",
         "mivolo_age": 42.2,
@@ -206,7 +206,7 @@
         "id_similarity": 0.47,
         "pose_prediction": "Body_Lean_Left",
         "pose_correct": 0,
-        "final_score": 32.04
+        "final_score": 15.04
     },
     {
         "id": 11,
@@ -223,9 +223,9 @@
         "mivolo_age": 34.8,
         "gender_correct": 1,
         "id_similarity": 0.37,
-        "pose_prediction": "Back_Over_Shoulder",
+        "pose_prediction": "Body_Lean_Left",
         "pose_correct": 0,
-        "final_score": 28.84
+        "final_score": 11.84
     },
     {
         "id": 12,
@@ -242,9 +242,9 @@
         "mivolo_age": 41.1,
         "gender_correct": 1,
         "id_similarity": 0.57,
-        "pose_prediction": "Back_Over_Shoulder",
+        "pose_prediction": "Head_Tilt_Right",
         "pose_correct": 0,
-        "final_score": 52.24
+        "final_score": 35.24
     },
     {
         "id": 13,
@@ -293,15 +293,15 @@
         "gt_pose": "Frontal",
         "vlm_expression": "surprise",
         "expression_correct": 0,
-        "scenario_reasoning": "- Extracted Context: ...\n- Visual Evidence: ...\n- Match Score: ...\n\nBased on the image provided, here is the analysis:\n\n- Extracted Context: The unique situational descriptor from the text is \"expressing joy and laughter.\"\n- Visual Evidence: The image shows a man with a mustache and a hat, looking upward with a somewhat serious expression. There is no clear indication of joy or laughter.\n- Match Score: 0.0\n\nThe visual content does not match the unique situational descriptor of \"expressing joy and laughter.\"",
-        "scenario_score": 0.0,
+        "scenario_reasoning": "- Extracted Context: ...\n- Visual Evidence: ...\n- Match Score: ...\n\nBased on the image provided, here is the analysis:\n\n- Extracted Context: The unique situational descriptor from the text is \"expressing joy and laughter.\"\n- Visual Evidence: The image shows a man looking upward with a joyful expression, but there is no specific detail about laughter or an environmental element that directly matches the text's unique situational descriptor.\n- Match Score: 0.5\n\nThe general vibe of joy is present, but the specific detail of laughter or an environmental element causing the emotion is not clearly visible.",
+        "scenario_score": 0.5,
         "mivolo_gender": "male",
         "mivolo_age": 37.9,
         "gender_correct": 0,
         "id_similarity": 0.47,
-        "pose_prediction": "Back_Over_Shoulder",
+        "pose_prediction": "Body_Turn_Right_Face_Front",
         "pose_correct": 0,
-        "final_score": 15.04
+        "final_score": 23.54
     },
     {
         "id": 16,
@@ -312,15 +312,15 @@
         "gt_pose": "Frontal",
         "vlm_expression": "surprise",
         "expression_correct": 0,
-        "scenario_reasoning": "- Extracted Context: ...\n- Visual Evidence: ...\n- Match Score: ...\n\nBased on the image provided, here is the analysis:\n\nStep 1: Text Extraction (Mental Process)\n- The unique situational descriptor from the input text is \"tilts her head backward with eyes closed.\"\n\nStep 2: Visual Verification\n- The visual evidence from the image shows a person tilting their head backward with eyes closed.\n\nOutput Format:\n- Extracted Context: tilts her head backward with eyes closed\n- Visual Evidence: The person in the image is tilting their head backward with eyes closed.\n- Match Score: 1.0",
-        "scenario_score": 1.0,
+        "scenario_reasoning": "- Extracted Context: ...\n- Visual Evidence: ...\n- Match Score: ...\n\nTo complete this task, I need the image to analyze. Please provide the image so I can perform the scenario consistency check.",
+        "scenario_score": 0.0,
         "mivolo_gender": "male",
         "mivolo_age": 38.5,
         "gender_correct": 0,
         "id_similarity": 0.48,
         "pose_prediction": "Head_Turn_Right",
         "pose_correct": 0,
-        "final_score": 32.36
+        "final_score": 15.36
     },
     {
         "id": 17,
@@ -331,15 +331,15 @@
         "gt_pose": "Head_Tilt_Right",
         "vlm_expression": "happy",
         "expression_correct": 1,
-        "scenario_reasoning": "- Extracted Context: eyes half-closed\n- Visual Evidence: The person's eyes are not clearly visible due to the angle and the presence of a mustache, but there is no clear indication of eyes being half-closed.\n- Match Score: 0.0",
-        "scenario_score": 0.0,
+        "scenario_reasoning": "- Extracted Context: eyes half-closed\n- Visual Evidence: The person's eyes are not clearly visible due to the angle and the presence of a mustache, but there is no clear indication of eyes being half-closed.\n- Match Score: 0.5",
+        "scenario_score": 0.5,
         "mivolo_gender": "male",
         "mivolo_age": 38.2,
         "gender_correct": 0,
         "id_similarity": null,
         "pose_prediction": "Frontal",
         "pose_correct": 0,
-        "final_score": 17.0
+        "final_score": 25.5
     },
     {
         "id": 18,
@@ -356,9 +356,9 @@
         "mivolo_age": 45.4,
         "gender_correct": 1,
         "id_similarity": 0.7,
-        "pose_prediction": "Body_Turn_Left_Face_Front",
+        "pose_prediction": "Head_Turn_Left",
         "pose_correct": 0,
-        "final_score": 39.4
+        "final_score": 22.4
     },
     {
         "id": 19,
@@ -372,11 +372,11 @@
         "scenario_reasoning": "- Extracted Context: \"cat resting on her lap\"\n- Visual Evidence: The image shows a close-up of a pink and purple object, possibly a container or a toy, with no visible cat or person.\n- Match Score: 0.0",
         "scenario_score": 0.0,
         "mivolo_gender": "female",
-        "mivolo_age": 26.5,
+        "mivolo_age": 26.4,
         "gender_correct": 1,
         "id_similarity": null,
         "pose_prediction": "No_Body_Detected",
         "pose_correct": 0,
-        "final_score": 17.0
+        "final_score": 0.0
     }
 ]
