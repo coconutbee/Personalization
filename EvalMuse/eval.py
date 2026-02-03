@@ -10,7 +10,9 @@ from omegaconf import OmegaConf
 from lavis.common.registry import registry
 from lavis.processors import load_processor
 
-# --- Patch (防止 import error) ---
+# ==========================================
+# 0. Patch (防止 import error) - 維持原樣
+# ==========================================
 def patch_lavis_library():
     base_dir = os.path.dirname(os.path.abspath(__file__))
     possible_paths = [
@@ -34,12 +36,16 @@ def patch_lavis_library():
         except Exception:
             pass
 patch_lavis_library()
-# ---------------------
 
+# ==========================================
+# 1. 模型初始化 (只執行一次)
+# ==========================================
 device = torch.device("cuda") if torch.cuda.is_available() else "cpu"
 
-def custom_load_model(model_path):
-    # 維持 364 解析度設定
+def load_fga_model(model_path):
+    print(f"🚀 Loading FGA Model from {model_path}...")
+    
+    # 手動 Config (維持 364 解析度)
     manual_config = {
         "model": {
             "vit_model": "eva_clip_g",
@@ -62,10 +68,12 @@ def custom_load_model(model_path):
     model_cls = registry.get_model_class("fga_blip2")
     model = model_cls.from_config(cfg.model)
     
+    # Tokenizer 設定
     tokenizer = BertTokenizer.from_pretrained("bert-base-uncased", truncation_side='right')
     tokenizer.add_special_tokens({"bos_token": "[DEC]"})
     target_vocab_size = len(tokenizer)
 
+    # Resize Embeddings
     if hasattr(model, "Qformer"):
         model.Qformer.bert.resize_token_embeddings(target_vocab_size)
         if hasattr(model.Qformer.cls, "predictions"):
@@ -80,111 +88,220 @@ def custom_load_model(model_path):
             new_decoder.bias.data[:old_decoder.out_features] = old_decoder.bias.data
             model.Qformer.cls.predictions.decoder = new_decoder
     
-    checkpoint = torch.load(model_path, map_location="cpu")
-    state_dict = checkpoint["model"] if "model" in checkpoint else checkpoint
-    model.load_state_dict(state_dict, strict=False)
-    return model.to(device)
+    # 載入權重
+    if os.path.exists(model_path):
+        checkpoint = torch.load(model_path, map_location="cpu")
+        state_dict = checkpoint["model"] if "model" in checkpoint else checkpoint
+        model.load_state_dict(state_dict, strict=False)
+    else:
+        print(f"⚠️ Warning: Model path {model_path} not found!")
 
-def load_manual_processors():
+    model.eval()
+    return model.to(device), tokenizer
+
+def load_processors():
     vis_cfg = OmegaConf.create({"name": "blip_image_eval", "image_size": 364})
     text_cfg = OmegaConf.create({"name": "blip_caption"})
     vis_processor = load_processor("blip_image_eval", cfg=vis_cfg)
     text_processor = load_processor("blip_caption", cfg=text_cfg)
-    return {"eval": vis_processor}, {"eval": text_processor}
+    return vis_processor, text_processor
 
-def eval(args):
-    model = custom_load_model(args.model_path)
-    model.eval()
-    vis_processors, text_processors = load_manual_processors()
-    tokenizer = BertTokenizer.from_pretrained("bert-base-uncased", truncation_side='right')
-    tokenizer.add_special_tokens({"bos_token": "[DEC]"})
+# ==========================================
+# 2. 核心計算函式 (封裝邏輯)
+# ==========================================
+def get_fga_metrics(model, image_tensor, clean_prompt, tokenizer, prompt_ids):
+    """
+    輸入處理好的 image_tensor 與 prompt，回傳 (總分, Token分數列表)
+    """
+    try:
+        with torch.no_grad():
+            alignment_score_output, scores = model.element_score(image_tensor.unsqueeze(0), [clean_prompt])
 
-    with open(args.json, 'r', encoding='utf-8') as f:
+        # A. 處理整體分數
+        final_score = 0.0
+        if isinstance(alignment_score_output, dict):
+            if 'score' in alignment_score_output: val = alignment_score_output['score']
+            elif 'overall_score' in alignment_score_output: val = alignment_score_output['overall_score']
+            elif 'itm_score' in alignment_score_output: val = alignment_score_output['itm_score']
+            else: val = list(alignment_score_output.values())[0]
+            final_score = val.item() if hasattr(val, 'item') else float(val)
+        elif hasattr(alignment_score_output, 'item'):
+            final_score = alignment_score_output.item()
+        else:
+            final_score = float(alignment_score_output)
+
+        # B. 處理 Token 分數
+        scores_tensor = scores.squeeze()
+        min_len = min(len(prompt_ids), len(scores_tensor))
+        
+        word_scores = []
+        for idx in range(min_len):
+            token_id = prompt_ids[idx]
+            token_str = tokenizer.decode([token_id])
+            token_score = scores_tensor[idx].item()
+            
+            if token_str in ['[CLS]', '[SEP]', '[DEC]']: continue
+            word_scores.append([token_str, round(token_score, 4)]) # 保留4位小數
+            
+        return round(final_score, 4), word_scores
+
+    except Exception as e:
+        print(f"Error in FGA calculation: {e}")
+        return None, None
+
+# ==========================================
+# 3. 檔案搜尋工具
+# ==========================================
+def smart_find_image(base_dir, filename):
+    if not filename: return None
+    name_no_ext = os.path.splitext(filename)[0]
+    candidates = [
+        f"0_{filename}",           # 0_1.jpg
+        f"0_{name_no_ext}.png",    # 0_1.png
+        filename,                  # 1.jpg
+        f"{name_no_ext}.png",      # 1.png
+        f"{name_no_ext}.jpg"       # 1.jpg
+    ]
+    for cand in candidates:
+        full_path = os.path.join(base_dir, cand)
+        if os.path.exists(full_path):
+            return full_path
+    return None
+
+def find_target_by_prompt(base_dir, prompt):
+    if not prompt or not os.path.exists(base_dir): return None
+    def normalize(text):
+        return text.replace("’", "'").replace("‘", "'").strip()
+    target_norm = normalize(prompt)
+    for filename in os.listdir(base_dir):
+        if normalize(os.path.splitext(filename)[0]) == target_norm:
+            return os.path.join(base_dir, filename)
+    return None
+
+# ==========================================
+# 4. 單一任務處理邏輯
+# ==========================================
+def process_task(task_name, swapped_dir, t2i_dir, json_path, components):
+    model, tokenizer, vis_proc, text_proc = components
+    
+    print(f"\n🔹 Processing Task: [{task_name}]")
+    print(f"   📂 Swapped Dir: {swapped_dir}")
+    print(f"   📂 T2I Source:  {t2i_dir}")
+
+    if not os.path.exists(json_path):
+        print(f"   ❌ JSON not found: {json_path}")
+        return None
+
+    with open(json_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
-    dataset_dir = "" 
-    if args.method == 'pixart': dataset_dir = "./faceswap_results/pixart"
-    elif args.method == 'infinity': dataset_dir = "./faceswap_results/infinity"
-    elif args.method == 'janus': dataset_dir = "./faceswap_results/janus"
-    elif args.method == 'showo2': dataset_dir = "./faceswap_results/showo2"
-    elif args.method == 'test': dataset_dir = "./faceswap_results/test"
+    stats = {'orig': [], 'swap': []}
+
+    for item in tqdm(data, desc=f"   Running {task_name}"):
+        raw_filename = item.get('image', '').strip()
+        prompt = item.get('prompt', '').strip()
+        
+        # 預處理 Text
+        clean_prompt = text_proc(prompt)
+        prompt_ids = tokenizer(clean_prompt).input_ids
+
+        # 初始化欄位
+        item['fga_orig_score'] = None       # T2I 原圖總分
+        item['fga_orig_tokens'] = None      # T2I 原圖單字分
+        item['fga_swap_score'] = None       # 換臉圖總分
+        item['fga_swap_tokens'] = None      # 換臉圖單字分
+
+        # --- A. 計算 Swapped Image 分數 ---
+        swapped_path = smart_find_image(swapped_dir, raw_filename)
+        if swapped_path:
+            try:
+                raw_img = Image.open(swapped_path).convert("RGB")
+                img_tensor = vis_proc(raw_img).to(device)
+                
+                score, tokens = get_fga_metrics(model, img_tensor, clean_prompt, tokenizer, prompt_ids)
+                
+                item['fga_swap_score'] = score
+                item['fga_swap_tokens'] = tokens
+                if score is not None: stats['swap'].append(score)
+            except Exception as e:
+                print(f"Error reading swapped image: {e}")
+
+        # --- B. 計算 Original T2I Image 分數 ---
+        t2i_path = find_target_by_prompt(t2i_dir, prompt)
+        if t2i_path:
+            try:
+                raw_img = Image.open(t2i_path).convert("RGB")
+                img_tensor = vis_proc(raw_img).to(device)
+                
+                score, tokens = get_fga_metrics(model, img_tensor, clean_prompt, tokenizer, prompt_ids)
+                
+                item['fga_orig_score'] = score
+                item['fga_orig_tokens'] = tokens
+                if score is not None: stats['orig'].append(score)
+            except Exception as e:
+                pass # T2I 不存在就算了
+
+    # 存檔
+    with open(json_path, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
     
-    print(f">>> Dataset Dir: {dataset_dir}")
+    # 計算平均
+    def avg(lst): return sum(lst)/len(lst) if lst else 0.0
+    return {
+        'name': task_name,
+        'avg_orig': avg(stats['orig']),
+        'avg_swap': avg(stats['swap'])
+    }
 
-    result_list = []
-    print(">>> Start Evaluation (Extracting ALL word scores)...")
-    for i, item in enumerate(tqdm(data)):
-        prompt = item['prompt']
-        img_name = f"0_{i}.jpg"
-        image_path = os.path.join(dataset_dir, img_name)
-        if not os.path.exists(image_path):
-            image_path = os.path.join(dataset_dir, f"0_{i}.png")
-        if not os.path.exists(image_path):
-            continue
-
-        try:
-            raw_image = Image.open(image_path).convert("RGB")
-            image = vis_processors["eval"](raw_image).to(device)
-            clean_prompt = text_processors["eval"](prompt)
-            prompt_ids = tokenizer(clean_prompt).input_ids
-
-            torch.cuda.empty_cache()
-            with torch.no_grad():
-                # alignment_score_output: 整體分數 / scores: 每個 token 的分數序列
-                alignment_score_output, scores = model.element_score(image.unsqueeze(0), [clean_prompt])
-
-            # 1. 處理整體分數 (崩潰修復)
-            final_score = 0.0
-            if isinstance(alignment_score_output, dict):
-                if 'score' in alignment_score_output: val = alignment_score_output['score']
-                elif 'overall_score' in alignment_score_output: val = alignment_score_output['overall_score']
-                elif 'itm_score' in alignment_score_output: val = alignment_score_output['itm_score']
-                else: val = list(alignment_score_output.values())[0]
-                final_score = val.item() if hasattr(val, 'item') else float(val)
-            elif hasattr(alignment_score_output, 'item'):
-                final_score = alignment_score_output.item()
-            else:
-                final_score = float(alignment_score_output)
-
-            # --- [NEW] 2. 提取「每一個字」的分數 ---
-            # scores 的形狀通常是 (1, seq_len) 或 (seq_len)
-            scores_tensor = scores.squeeze() # 轉成 1D Tensor
-            
-            # 確保長度一致 (通常 scores 是跟隨 prompt_ids 的)
-            min_len = min(len(prompt_ids), len(scores_tensor))
-            
-            word_scores = []
-            for idx in range(min_len):
-                token_id = prompt_ids[idx]
-                token_str = tokenizer.decode([token_id]) # 將 ID 轉回文字
-                token_score = scores_tensor[idx].item()
-                
-                # 過濾掉特殊的開始/結束符號 (可選，這裡保留以便除錯)
-                if token_str in ['[CLS]', '[SEP]', '[DEC]']: continue
-                
-                word_scores.append([token_str, token_score])
-            # ----------------------------------------
-
-            # 3. 為了兼容性，保留原本的 result 欄位
-            item['fga_alignment_score'] = f"{final_score:.2f}"
-            item['all_token_scores'] = [[word, round(score, 2)] for word, score in word_scores] # 這裡存了所有字的細粒度分數
-            
-            result_list.append(item)
-            
-        except Exception as e:
-            print(f"Error processing image {i}: {e}")
-            continue
-
-    os.makedirs(os.path.dirname(args.save_path), exist_ok=True)
-    with open(args.save_path, 'w', encoding='utf-8') as file:
-        json.dump(result_list, file, ensure_ascii=False, indent=4)
-    print(f">>> Results saved to {args.save_path}")
-
+# ==========================================
+# 5. 主程式
+# ==========================================
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--json', type=str, default='gt.json')
-    parser.add_argument('--method', type=str, default='pixart')
-    parser.add_argument('--save_path', type=str, default='EM_results/fga_word_scores.json')
+    # 這裡只留 model_path 參數，其他參數由 TASKS 控制
     parser.add_argument('--model_path', type=str, default='./EvalMuse/fga_blip2.pth')
+    parser.add_argument('--json', type=str, default='gt.json')  # Not used directly here
     args = parser.parse_args()
-    eval(args)
+
+    # 1. 載入模型 (一次性)
+    model, tokenizer = load_fga_model(args.model_path)
+    vis_processor, text_processor = load_processors()
+    components = (model, tokenizer, vis_processor, text_processor)
+
+    # 2. 定義任務清單 (CONFIG)
+    DEFAULT_T2I_DIR = './pixart_outputs'
+    json_path = 'gt.json'  # Default JSON path (not used directly here)
+    TASKS = [
+        {
+            'name': 'PixArt',
+            'swapped_dir': './faceswap_results/pixart',
+            't2i_dir': DEFAULT_T2I_DIR,
+            'json_path': json_path
+        },
+    ]
+
+    summary = []
+    print(f"\n📋 Starting Batch FGA Evaluation...")
+
+    for task in TASKS:
+        if not os.path.exists(task['swapped_dir']):
+            print(f"⚠️ Skipping {task['name']} (Folder not found)")
+            continue
+            
+        res = process_task(
+            task['name'], 
+            task['swapped_dir'], 
+            task['t2i_dir'], 
+            task['json_path'], 
+            components
+        )
+        if res: summary.append(res)
+
+    # 3. 輸出總表
+    print("\n" + "="*60)
+    print(f"{'Method':<15} | {'FGA Orig (T2I)':<18} | {'FGA Swapped':<18}")
+    print("-" * 60)
+    for res in summary:
+        print(f"{res['name']:<15} | {res['avg_orig']:<18.4f} | {res['avg_swap']:<18.4f}")
+    print("="*60)
+    print("✅ All tasks completed.")
