@@ -84,7 +84,7 @@ def normalize_swap_cols(df):
                     'swap_clip_t2i', 't2i_clip_t2i', 'swap_clip_id_i2i', 't2i_clip_id_i2i',
                     'swap_dino_id_i2i', 't2i_dino_id_i2i']
     
-    text_cols = ['gt_expression', 'vlm_expression', 'vlm_expression_t2i', 'swap_vlm_expression', 't2i_vlm_expression',
+    text_cols = ['gt_expression', 'swap_vlm_expression', 't2i_vlm_expression', 'swap_vlm_expression', 't2i_vlm_expression',
                  'gt_pose', 'swap_pose_prediction', 't2i_pose_prediction']
     for col in text_cols:
         if col not in df.columns: df[col] = "N/A"
@@ -331,8 +331,8 @@ def main():
         path_swap, _ = smart_find_image(SWAP_DIR, item['image'])
         
         gt_expr = item.get('gt_expression', 'N/A')
-        t2i_expr = item.get('vlm_expression_t2i', item.get('t2i_vlm_expression', 'N/A'))
-        swap_expr = item.get('vlm_expression', item.get('swap_vlm_expression', 'N/A'))
+        t2i_expr = item.get('t2i_vlm_expression', item.get('t2i_vlm_expression', 'N/A'))
+        swap_expr = item.get('swap_vlm_expression', item.get('swap_vlm_expression', 'N/A'))
         gt_pose = item.get('gt_pose', 'N/A')
         t2i_pose = item.get('t2i_pose_prediction', 'N/A')
         swap_pose = item.get('swap_pose_prediction', 'N/A')
