@@ -1,6 +1,7 @@
 import json
 import re
 import os
+import argparse
 
 # ==========================================
 # 1. 定義 Mapping Rules (Hard Coded)
@@ -125,15 +126,15 @@ def process_json_data(input_data):
     return labeled_data
 
 if __name__ == "__main__":
-    # 1. 設定檔案名稱
-    input_filename = "prompts.json"       # 你的來源檔案
-    output_filename = "gt.json"     # 處理後要存的檔案
+    parser = argparse.ArgumentParser(description="Process JSON files for labeling.")
+    parser.add_argument("--input", type=str, default="metadata.json", help="Input JSON file")
+    parser.add_argument("--output", type=str, default="metadata.json", help="Output JSON file")
+    args = parser.parse_args()
 
     # 2. 讀取 JSON 檔案
-    if os.path.exists(input_filename):
+    if os.path.exists(args.input):
         try:
-            print(f"Reading from {input_filename}...")
-            with open(input_filename, 'r', encoding='utf-8') as f:
+            with open(args.input, 'r', encoding='utf-8') as f:
                 # 這裡就是你要的：從檔案讀取並存入變數
                 raw_json_input = json.load(f) 
                 
@@ -141,13 +142,12 @@ if __name__ == "__main__":
             result_data = process_json_data(raw_json_input)
 
             # 4. 儲存結果
-            with open(output_filename, "w", encoding="utf-8") as f:
+            with open(args.output, "w", encoding="utf-8") as f:
                 json.dump(result_data, f, indent=4, ensure_ascii=False)
                 
             print(f"Success! Processed {len(result_data)} items.")
-            print(f"Results saved to: {output_filename}")
-
+            print(f"Results saved to: {args.output}")
         except json.JSONDecodeError:
-            print(f"Error: {input_filename} 的格式錯誤 (不是合法的 JSON)。")
+            print(f"Error: {args.input} 的格式錯誤 (不是合法的 JSON)。")
     else:
-        print(f"Error: 找不到檔案 {input_filename}，請確認檔案是否在同一個資料夾內。")
+        print(f"Error: 找不到檔案 {args.input}，請確認檔案是否在同一個資料夾內。")
