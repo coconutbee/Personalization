@@ -250,6 +250,84 @@ def plot_fga_heatmap(item):
     ).properties(width=300, height=max(400, int(len(df_all)/2 * 25))).facet(column=alt.Column('Type:N', title=None)).resolve_scale(y='shared', x='shared')
     st.altair_chart(chart, use_container_width=True)
 
+def analyze_t2i_components(df):
+    """
+    針對 Pose, Expression, ID, Scenario 四個細項進行 T2I 分析
+    """
+    # 1. 定義顯示名稱與對應的 DataFrame 欄位
+    components = {
+        'Pose': 'swap_pose_correct',
+        'Expression': 'expression_correct', 
+        'Identity': 'swap_id_similarity',
+        'Scenario': 'swap_scenario_score'
+    }
+
+    stats_data = []
+    
+    # 2. 計算統計數據
+    for label, col in components.items():
+        if col in df.columns:
+            val_mean = df[col].mean()
+            val_std = df[col].std()
+            stats_data.append({
+                "Component": label,
+                "Mean": val_mean,
+                "Std Dev": val_std,
+                "Lower": max(0, val_mean - val_std), # 誤差線下限 (不小於0)
+                "Upper": min(1, val_mean + val_std)  # 誤差線上限 (不大於1)
+            })
+    
+    if not stats_data:
+        st.warning("⚠️ Missing component data (Pose/Exp/ID/Scen).")
+        return
+
+    stats_df = pd.DataFrame(stats_data)
+
+    # 3. 介面呈現
+    st.subheader("🧩 Component Breakdown (T2I)")
+    
+    c1, c2 = st.columns([1, 2])
+    
+    with c1:
+        # 表格顯示
+        st.caption("Score Statistics")
+        # 修正重點：style.format 改用字典指定欄位，避免格式化到字串欄位 'Component'
+        st.dataframe(
+            stats_df[['Component', 'Mean', 'Std Dev']].style.format(
+                {'Mean': '{:.4f}', 'Std Dev': '{:.4f}'}
+            )
+            .background_gradient(subset=['Mean'], cmap='Greens', vmin=0, vmax=1),
+            use_container_width=True,
+            hide_index=True
+        )
+
+    with c2:
+        # 圖表顯示 (Bar Chart + Error Bars)
+        st.caption("Performance & Stability (Bar = Mean, Line = Std Dev)")
+        
+        # 基礎圖層
+        base = alt.Chart(stats_df).encode(
+            x=alt.X('Component', sort=['ID', 'Pose', 'Expression', 'Scenario'], title=None),
+            tooltip=['Component', 'Mean', 'Std Dev']
+        )
+
+        # 長條圖 (平均分數)
+        bars = base.mark_bar(color='#4c78a8', opacity=0.8).encode(
+            y=alt.Y('Mean', title='Score (0-1)', scale=alt.Scale(domain=[0, 1]))
+        )
+
+        # 誤差線 (標準差範圍)
+        error_bars = base.mark_rule(color='red', strokeWidth=2).encode(
+            y='Lower',
+            y2='Upper'
+        )
+        
+        # 顯示數值標籤
+        text = bars.mark_text(dy=-10, color='black').encode(
+            text=alt.Text('Mean', format='.3f')
+        )
+
+        st.altair_chart((bars + error_bars + text).properties(height=300), use_container_width=True)
 # ==========================================
 # 🖥️ 主程式
 # ==========================================
@@ -283,6 +361,7 @@ def main():
     c3.metric("Std Dev (Swap)", f"{df['swap_final_score'].std():.3f}")
     c4.metric("Total Images", len(df))
     st.divider()
+    analyze_t2i_components(df)
 
     # 2. 細項統計
     st.header("2. Component Impact Statistics & Inspection")

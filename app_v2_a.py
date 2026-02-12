@@ -206,17 +206,174 @@ def plot_fga_heatmap(item, has_swap=False):
     
     st.altair_chart(chart, use_container_width=True)
 
+
+def display_metric_summary(df):
+    """
+    計算並展示 T2I 五大指標的平均數與標準差
+    """
+    # 定義要比較的五個指標 (顯示名稱 : DataFrame欄位名)
+    target_metrics = {
+        'CLIP Text Align': 't2i_clip_t2i',
+        'CLIP ID Sim': 't2i_clip_id_i2i',
+        'DINO ID Sim': 't2i_dino_id_i2i',
+        'EvalMuse Score': 'evalmuse_t2i',
+        'Final Score': 't2i_final_score'
+    }
+
+    stats_data = []
+    
+    # 計算統計量
+    for label, col in target_metrics.items():
+        if col in df.columns:
+            mu = df[col].mean()
+            sigma = df[col].std()
+            stats_data.append({
+                "Metric": label,
+                "Mean": mu,
+                "Std Dev (σ)": sigma,
+                "Min": df[col].min(),
+                "Max": df[col].max()
+            })
+    
+    if not stats_data:
+        st.warning("No metric data available to summarize.")
+        return
+
+    stats_df = pd.DataFrame(stats_data)
+
+    # --- 顯示介面 ---
+    st.subheader("📈 T2I Metrics Statistics")
+    
+    c1, c2 = st.columns([2, 3])
+    
+    with c1:
+        # 1. 數據表格 (使用 Pandas Styler 上色)
+        st.caption("Statistical Summary Table")
+        st.dataframe(
+            stats_df.style.format({
+                "Mean": "{:.4f}", 
+                "Std Dev (σ)": "{:.4f}",
+                "Min": "{:.3f}",
+                "Max": "{:.3f}"
+            }).background_gradient(subset=['Mean'], cmap='Blues'),
+            use_container_width=True,
+            hide_index=True
+        )
+
+    with c2:
+        # 2. 視覺化比較圖 (Bar Chart with Error Bars)
+        # 為了畫圖，我們需要將數據轉換格式
+        st.caption("Mean Score with Standard Deviation Range")
+        
+        base = alt.Chart(stats_df).encode(
+            x=alt.X('Metric', sort=list(target_metrics.keys()), title=None),
+            tooltip=['Metric', 'Mean', 'Std Dev (σ)']
+        )
+
+        # 長條圖 (平均值)
+        bars = base.mark_bar(color='#4c78a8', opacity=0.8).encode(
+            y=alt.Y('Mean', title='Score')
+        )
+
+        # 誤差線 (標準差)
+        error_bars = base.mark_errorbar(extent='ci').encode(
+            y=alt.Y('Mean', title=''),
+            yError='Std Dev (σ)'
+        )
+        
+        # 疊加圖表
+        chart = (bars + error_bars).properties(height=250)
+        st.altair_chart(chart, use_container_width=True)
+
+def analyze_t2i_components(df):
+    """
+    針對 Pose, Expression, ID, Scenario 四個細項進行 T2I 分析
+    """
+    # 1. 定義顯示名稱與對應的 DataFrame 欄位
+    components = {
+        'Pose': 't2i_pose_correct',
+        'Expression': 'expression_correct_t2i', 
+        'Identity': 't2i_id_similarity',
+        'Scenario': 't2i_scenario_score'
+    }
+
+    stats_data = []
+    
+    # 2. 計算統計數據
+    for label, col in components.items():
+        if col in df.columns:
+            val_mean = df[col].mean()
+            val_std = df[col].std()
+            stats_data.append({
+                "Component": label,
+                "Mean": val_mean,
+                "Std Dev": val_std,
+                "Lower": max(0, val_mean - val_std), # 誤差線下限 (不小於0)
+                "Upper": min(1, val_mean + val_std)  # 誤差線上限 (不大於1)
+            })
+    
+    if not stats_data:
+        st.warning("⚠️ Missing component data (Pose/Exp/ID/Scen).")
+        return
+
+    stats_df = pd.DataFrame(stats_data)
+
+    # 3. 介面呈現
+    st.subheader("🧩 Component Breakdown (T2I)")
+    
+    c1, c2 = st.columns([1, 2])
+    
+    with c1:
+        # 表格顯示
+        st.caption("Score Statistics")
+        # 修正重點：style.format 改用字典指定欄位，避免格式化到字串欄位 'Component'
+        st.dataframe(
+            stats_df[['Component', 'Mean', 'Std Dev']].style.format(
+                {'Mean': '{:.4f}', 'Std Dev': '{:.4f}'}
+            )
+            .background_gradient(subset=['Mean'], cmap='Greens', vmin=0, vmax=1),
+            use_container_width=True,
+            hide_index=True
+        )
+
+    with c2:
+        # 圖表顯示 (Bar Chart + Error Bars)
+        st.caption("Performance & Stability (Bar = Mean, Line = Std Dev)")
+        
+        # 基礎圖層
+        base = alt.Chart(stats_df).encode(
+            x=alt.X('Component', sort=['ID', 'Pose', 'Expression', 'Scenario'], title=None),
+            tooltip=['Component', 'Mean', 'Std Dev']
+        )
+
+        # 長條圖 (平均分數)
+        bars = base.mark_bar(color='#4c78a8', opacity=0.8).encode(
+            y=alt.Y('Mean', title='Score (0-1)', scale=alt.Scale(domain=[0, 1]))
+        )
+
+        # 誤差線 (標準差範圍)
+        error_bars = base.mark_rule(color='red', strokeWidth=2).encode(
+            y='Lower',
+            y2='Upper'
+        )
+        
+        # 顯示數值標籤
+        text = bars.mark_text(dy=-10, color='black').encode(
+            text=alt.Text('Mean', format='.3f')
+        )
+
+        st.altair_chart((bars + error_bars + text).properties(height=300), use_container_width=True)  
 # ==========================================
 # 🖥️ 主程式
 # ==========================================
 def main():
     with st.sidebar:
         st.title("🎛️ Settings")
-        json_path = st.text_input("JSON Path", value="metadata.json")
-        method_options = {'pixart': ('/media/ee303/disk2/style_generation/diffusers/pixart_test')}
+        json_path = st.text_input("JSON Path", value="photomaker_pslz_metadata.json")
+        method_options = {'photomaker': ('/media/ee303/disk2/style_generation/PhotoMaker/photomaker_pslz')}
         
         # 預設路徑
-        T2I_DIR_DEF = '/media/ee303/disk2/style_generation/diffusers/pixart_test'
+        T2I_DIR_DEF = '/media/ee303/disk2/style_generation/PhotoMaker/photomaker_pslz'
         
         T2I_DIR = st.text_input("T2I Directory", T2I_DIR_DEF)
         REF_DIR = st.text_input("Reference Directory", "/media/ee303/disk2/JACK/reference")
@@ -254,7 +411,8 @@ def main():
         cols[2].metric("EvalMuse Score (Swap)", f"{avg_swap:.3f}", delta=f"{avg_swap - avg_t2i:+.3f} vs T2I")
     
     st.divider()
-
+    # display_metric_summary(df)
+    analyze_t2i_components(df)
     # 2. 詳細檢視
     st.header("2. Detailed Inspection")
     
@@ -283,7 +441,7 @@ def main():
     with cols_img[1]: 
         st.markdown("**T2I**")
         if path_t2i: st.image(Image.open(path_t2i))
-        st.caption(f"Expr: {item.get('t2i_vlm_expression', 'N/A')} | Pose: {item.get('t2i_pose_prediction', 'N/A')}")
+        st.caption(f"Expr: {item.get('t2i_vlm_expression', 'N/A')} | Pose: {item.get('t2i_pose', 'N/A')}")
 
     # Swap (Optional)
     if HAS_SWAP:
