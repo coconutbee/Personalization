@@ -162,11 +162,11 @@ if __name__ == '__main__':
     model = load_adaface_model()
     
     parser = argparse.ArgumentParser(description="Batch AdaFace ID Evaluation with Merge Support")
-    parser.add_argument("--json", type=str, default="metadata.json", help="JSON 檔案路徑")
-    parser.add_argument("--name", type=str, default="pixart", help="任務名稱")
-    parser.add_argument("--t2i", type=str, default="/media/ee303/disk2/style_generation/diffusers/pixart_test")
-    parser.add_argument("--swap", type=str, default="/media/ee303/disk2/JACK/FACE_SWAPED_pixart_test")
-    parser.add_argument("--ref", type=str, default="/media/ee303/disk2/JACK/reference")
+    parser.add_argument("--json", type=str, required=True, help="JSON 檔案路徑")
+    parser.add_argument("--name", type=str, required=True, help="任務名稱")
+    parser.add_argument("--t2i", type=str, required=True, help="T2I 生成圖片資料夾路徑")
+    parser.add_argument("--swap", type=str, required=True, help="Swap 生成圖片資料夾路徑")
+    parser.add_argument("--ref", type=str, required=True, help="Reference 參考圖片資料夾路徑")
     args = parser.parse_args()
 
     res = process_task_merge(args.name, args.swap, args.t2i, args.ref, args.json, model)

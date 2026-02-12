@@ -1,5 +1,6 @@
 import os
 import json
+import argparse
 
 def generate_json_from_folder(folder_path, output_file):
     # 支援的圖片格式
@@ -32,8 +33,14 @@ def generate_json_from_folder(folder_path, output_file):
 
     print(f"成功！已處理 {len(json_data)} 張圖片，結果儲存於: {output_file}")
 
-# --- 設定區域 ---
-target_folder = '/media/ee303/disk2/style_generation/diffusers/pixart_test'  # 這裡填入你的圖片資料夾路徑
-output_json = 'metadata.json' # 輸出的檔案名稱
+
+
+if __name__ == '__main__':
+    args = argparse.ArgumentParser(description="Generate JSON metadata from image folder")
+    args.add_argument('--folder', type=str, required=True, help='Path to the folder containing images')
+    args.add_argument('--output', type=str, required=True, help='Output JSON file path')
+    parsed_args = args.parse_args()
+    target_folder = parsed_args.folder
+    output_json = parsed_args.output
 
 generate_json_from_folder(target_folder, output_json)

@@ -1,0 +1,8 @@
+python json_maker_a.py --folder /media/ee303/disk2/style_generation/PhotoMaker/photomaker_pslz --output photomaker_pslz_metadata.json
+python AdaFace/inference_v2_a.py --json photomaker_pslz_metadata.json --name photomaker_pslz --t2i /media/ee303/disk2/style_generation/PhotoMaker/photomaker_pslz  --ref /media/ee303/disk2/JACK/reference
+python gt_maker.py --input photomaker_pslz_metadata.json --output photomaker_pslz_metadata.json
+python pose/eval_pose_v2_a.py --t2i /media/ee303/disk2/style_generation/PhotoMaker/photomaker_pslz --name photomaker_pslz --ref /media/ee303/disk2/JACK/reference --json photomaker_pslz_metadata.json
+python exps_scenario_v2_a.py --name photomaker_pslz --json photomaker_pslz_metadata.json --ref /media/ee303/disk2/JACK/reference --t2i /media/ee303/disk2/style_generation/PhotoMaker/photomaker_pslz --mode t2i
+python general_scoring_v2_a.py --json photomaker_pslz_metadata.json --name photomaker_pslz --ref /media/ee303/disk2/JACK/reference --t2i /media/ee303/disk2/style_generation/PhotoMaker/photomaker_pslz --mode t2i
+python scoring_v2.py --json photomaker_pslz_metadata.json --name photomaker_pslz --ref /media/ee303/disk2/JACK/reference --t2i /media/ee303/disk2/style_generation/PhotoMaker/photomaker_pslz --mode t2i
+python EvalMuse/eval_v2_a.py --json photomaker_pslz_metadata.json --name photomaker_pslz --t2i /media/ee303/disk2/style_generation/PhotoMaker/photomaker_pslz --mode t2i

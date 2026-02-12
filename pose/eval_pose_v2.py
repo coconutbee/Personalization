@@ -238,10 +238,10 @@ def run_pose_update(json_file, swapped_dir, t2i_dir, checkpoint_path, ml_model_p
     print(f"✅ 檔案已更新完成至 {json_file}")
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--json", type=str, default="metadata.json", help="要追加結果的 JSON 檔案路徑")
-    parser.add_argument("--name", type=str, default="pixart")
-    parser.add_argument("--t2i", type=str, default="/media/ee303/disk2/style_generation/diffusers/pixart_test")
-    parser.add_argument("--swap", type=str, default="/media/ee303/disk2/JACK/FACE_SWAPED_pixart_test")
+    parser.add_argument("--json", type=str, required=True, help="要追加結果的 JSON 檔案路徑")
+    parser.add_argument("--name", type=str, required=True)
+    parser.add_argument("--t2i", type=str, required=True)
+    parser.add_argument("--swap", type=str, required=True)
     parser.add_argument("--checkpoint", default='./pose/checkpoints/SemiUHPE/DAD-WildHead-EffNetV2-S-best.pth')
     parser.add_argument("--ml_model", default='./pose/pose_classifier_mediapipe.pkl')
     
