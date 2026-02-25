@@ -142,3 +142,8 @@ To run the UI application for visualization, execute:
 ```bash
 streamlit run app_v3.py
 ```
+
+### Notes
+using prompt_maker.py for t2i prompt generation
+using pose/eval_paul.py for pose evaluation
+using pose/app.py for visualization of pose classification results
