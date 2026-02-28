@@ -16,9 +16,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 # --- 設定 ---
 # 1. 模型權重路徑
 CHECKPOINT_PATH = "checkpoints/SemiUHPE/DAD-WildHead-EffNetV2-S-best.pth"
-# 2. 輸出結果檔名 (改為 JSON)
-OUTPUT_JSON = "all_pose_angles.json"
-# 3. 支援的圖片格式
+# 2. 支援的圖片格式
 SUPPORT_EXT = ('.jpg', '.jpeg', '.png', '.bmp', '.webp')
 
 # 環境設定
@@ -162,6 +160,7 @@ def process_folder(folder_path):
     if not head_model: return
 
     image_paths = scan_images(folder_path)
+    output_name = os.path.basename(folder_path)
     if not image_paths:
         print("❌ 資料夾內沒有圖片")
         return
@@ -249,9 +248,9 @@ def process_folder(folder_path):
     
     if results:
         # 將結果存成 JSON 檔案
-        with open(OUTPUT_JSON, 'w', encoding='utf-8') as f:
+        with open(f"{output_name}.json", 'w', encoding='utf-8') as f:
             json.dump(results, f, indent=4, ensure_ascii=False)
-        print(f"\n✅ 分類結果與所有角度數據已存至: {OUTPUT_JSON}")
+        print(f"\n✅ 分類結果與所有角度數據已存至: {output_name}.json")
     else:
         print("\n⚠️ 沒有成功提取任何角度。")
 

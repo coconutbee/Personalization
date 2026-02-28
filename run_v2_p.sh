@@ -17,7 +17,7 @@ name="pose_prompt_uniprotrait"
 python json_maker_a.py --folder "$t2i" --output "$JSON"
 python AdaFace/inference_v2_a.py --json "$JSON" --name "$name" --t2i "$t2i" --ref "$ref"
 python gt_maker.py --input "$JSON" --output "$JSON"
-python pose/eval_pose_v2_a.py --t2i "$t2i" --name "$name" --ref "$ref" --json "$JSON"
+python pose/eval_paul.py --t2i "$t2i" --name "$name" --ref "$ref" --json "$JSON"
 python exps_scenario_v2_a.py --name "$name" --json "$JSON" --ref "$ref" --t2i "$t2i" --mode t2i
 python general_scoring_v2_a.py --json "$JSON" --name "$name" --ref "$ref" --t2i "$t2i" --mode t2i
 python scoring_v2_a.py --json "$JSON" --name "$name" --ref "$ref" --t2i "$t2i" --mode t2i
